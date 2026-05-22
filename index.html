@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#e0f2fe">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>🏸 Lịch Thi Đấu Cầu Lông - Sân 7 & 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-bg: #e0f2fe;
+    --c-bg-2: #bae6fd;
+    --c-card: rgba(255, 255, 255, 0.65);
+    --c-card-border: rgba(14, 116, 144, 0.15);
+    --c-blue: #0ea5e9;
+    --c-blue-2: #0284c7;
+    --c-orange: #f97316;
+    --c-orange-2: #ea580c;
+    --c-yellow: #eab308;
+    --c-text: #0f172a;
+    --c-text-dim: #475569;
+    --c-text-mute: #64748b;
+    --c-success: #10b981;
+    --c-rest: #94a3b8;
+    --shadow-glow: 0 4px 24px rgba(14, 165, 233, 0.18);
+    --shadow-orange: 0 4px 24px rgba(249, 115, 22, 0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    /* Critical: do NOT set fixed height or overflow:hidden on html/body */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    background: var(--c-bg);
+    color: var(--c-text);
+    /* Use min-height NOT height so content can grow */
+    min-height: 100vh;
+    min-height: 100dvh; /* dynamic viewport for mobile browsers with address bar */
+    /* Allow vertical scroll, prevent horizontal only */
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(125, 211, 252, 0.55) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(254, 215, 170, 0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 0% 60%, rgba(186, 230, 253, 0.5) 0%, transparent 70%),
+      linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 50%, #ecfeff 100%);
+    background-repeat: no-repeat;
+    -webkit-tap-highlight-color: transparent;
+    /* Ensure touch actions work for scrolling */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Decorative noise removed - was causing scroll issues on some mobile browsers */
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== HEADER ===== */
+  .hero {
+    text-align: center;
+    padding: 32px 0 40px;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0369a1;
+    margin-bottom: 20px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-badge .dot {
+    width: 8px; height: 8px;
+    background: var(--c-orange);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--c-orange);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  h1.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    color: #0c4a6e;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 30px rgba(14, 165, 233, 0.15);
+  }
+  h1.hero-title .accent {
+    color: #ea580c;
+  }
+
+  .hero-subtitle {
+    color: #475569;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .stat-pill {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-size: 14px;
+    color: #334155;
+    box-shadow: 0 2px 8px rgba(14, 116, 144, 0.06);
+  }
+
+  .stat-pill strong {
+    color: var(--c-orange);
+    font-size: 18px;
+    margin-right: 6px;
+    font-weight: 700;
+  }
+
+  /* ===== TABS ===== */
+  .tabs-wrap {
+    margin: 20px 0 28px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 12px 0;
+    background: rgba(240, 249, 255, 0.92);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px 4px;
+  }
+
+  .tab {
+    flex-shrink: 0;
+    padding: 12px 22px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(14, 165, 233, 0.18);
+    border-radius: 14px;
+    color: #334155;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(14, 116, 144, 0.06);
+  }
+
+  .tab:hover {
+    color: #0c4a6e;
+    border-color: var(--c-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.18);
+  }
+
+  .tab.active {
+    background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-2) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .tab.tab-overview.active {
+    background: linear-gradient(135deg, var(--c-orange) 0%, var(--c-orange-2) 100%);
+    box-shadow: var(--shadow-orange);
+  }
+
+  .tab .tab-count {
+    font-size: 11px;
+    padding: 2px 8px;
+    background: rgba(14, 165, 233, 0.12);
+    color: #0369a1;
+    border-radius: 100px;
+    font-weight: 700;
+  }
+  .tab.active .tab-count {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+  }
+
+  /* ===== PANELS ===== */
+  .panel {
+    display: none;
+    animation: fadeUp 0.4s ease-out;
+  }
+  .panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-header {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .panel-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    color: #0c4a6e;
+  }
+
+  .panel-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .meta-card {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 10px;
+    font-size: 13px;
+    color: #475569;
+    box-shadow: 0 2px 6px rgba(14, 116, 144, 0.05);
+  }
+  .meta-card strong {
+    color: #0c4a6e;
+    font-weight: 700;
+    margin-left: 4px;
+  }
+
+  /* ===== OVERVIEW TABLE ===== */
+  .overview-table {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 12px 40px rgba(14, 116, 144, 0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  thead th {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(249, 115, 22, 0.1));
+    padding: 18px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0c4a6e;
+    border-bottom: 2px solid rgba(14, 165, 233, 0.15);
+  }
+
+  thead th:first-child { text-align: center; width: 160px; }
+
+  tbody tr {
+    transition: all 0.2s ease;
+  }
+
+  tbody tr:hover {
+    background: rgba(14, 165, 233, 0.05);
+  }
+
+  tbody tr.current-round {
+    background: linear-gradient(90deg, rgba(234, 179, 8, 0.15), rgba(249, 115, 22, 0.05));
+    box-shadow: inset 4px 0 0 var(--c-yellow);
+  }
+
+  tbody td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.08);
+    font-size: 14px;
+    vertical-align: middle;
+    color: #1e293b;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  .round-cell {
+    text-align: center;
+    font-weight: 700;
+  }
+  .round-num {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--c-blue), var(--c-blue-2));
+    color: white;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+  }
+  tr.current-round .round-num {
+    background: linear-gradient(135deg, var(--c-orange), var(--c-orange-2));
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    animation: pulse-glow 2s infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4); }
+    50% { box-shadow: 0 4px 22px rgba(249, 115, 22, 0.8); }
+  }
+  .round-time {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748b;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .match-cell {
+    line-height: 1.5;
+  }
+
+  .match-vs {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #ea580c;
+    margin: 0 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .pair-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0369a1;
+  }
+  .pair-chip-2 {
+    background: rgba(249, 115, 22, 0.12);
+    border-color: rgba(249, 115, 22, 0.3);
+    color: #c2410c;
+  }
+
+  .court-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: linear-gradient(135deg, var(--c-blue), var(--c-blue-2));
+    color: white;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-right: 8px;
+  }
+  .court-badge.court-8 {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  }
+
+  .rest-text {
+    color: #64748b;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* ===== PAIR SCHEDULE ===== */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .round-card {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 16px;
+    padding: 20px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(14, 116, 144, 0.06);
+  }
+
+  .round-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--c-rest);
+  }
+
+  .round-card.play::before {
+    background: linear-gradient(90deg, var(--c-blue), var(--c-orange));
+  }
+
+  .round-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(14, 165, 233, 0.35);
+    box-shadow: 0 12px 32px rgba(14, 116, 144, 0.14);
+  }
+
+  .round-card.current {
+    border-color: var(--c-yellow);
+    box-shadow: 0 0 24px rgba(234, 179, 8, 0.3);
+    background: linear-gradient(135deg, rgba(254, 240, 138, 0.5), rgba(255, 237, 213, 0.5));
+  }
+
+  .round-card.current::before {
+    background: linear-gradient(90deg, var(--c-yellow), var(--c-orange));
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .rc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .rc-round-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #0c4a6e;
+  }
+
+  .rc-status {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .rc-status.play {
+    background: linear-gradient(135deg, var(--c-orange), var(--c-orange-2));
+    color: white;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+  }
+
+  .rc-status.rest {
+    background: rgba(148, 163, 184, 0.2);
+    color: #475569;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+  }
+
+  .rc-time {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .rc-detail {
+    padding-top: 14px;
+    border-top: 1px dashed rgba(14, 165, 233, 0.2);
+  }
+
+  .rc-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .rc-detail-row:last-child { margin-bottom: 0; }
+
+  .rc-label {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .rc-value {
+    font-weight: 700;
+    font-size: 14px;
+    color: #0f172a;
+  }
+
+  .rc-rest-msg {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+    padding: 20px 0;
+    font-size: 14px;
+  }
+
+  .rc-rest-msg .ice {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 6px;
+    filter: grayscale(0.5);
+  }
+
+  /* ===== FLOATING BUTTONS ===== */
+  .fab-group {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .back-top-btn {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--c-blue), var(--c-blue-2));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+  }
+  .back-top-btn.visible { display: flex; }
+  .back-top-btn:hover { transform: translateY(-3px) scale(1.08); }
+  .back-top-btn svg { width: 22px; height: 22px; }
+
+  /* ===== PRINT BUTTON ===== */
+  .print-btn {
+    padding: 14px 22px;
+    background: linear-gradient(135deg, var(--c-orange), var(--c-orange-2));
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(255, 133, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .print-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 36px rgba(255, 133, 0, 0.6);
+  }
+
+  .print-btn svg { width: 18px; height: 18px; }
+
+  /* ===== RESPONSIVE ===== */
+
+  /* Tablet & smaller */
+  @media (max-width: 900px) {
+    .container { padding: 24px 16px 80px; }
+    .hero-stats { gap: 8px; }
+    .stat-pill { padding: 8px 14px; font-size: 13px; }
+    .stat-pill strong { font-size: 16px; }
+    .schedule-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  }
+
+  /* Mobile: convert overview table -> stacked cards */
+  @media (max-width: 720px) {
+    .container { padding: 16px 12px 90px; }
+    .hero { padding: 8px 0 20px; }
+    .hero-badge { font-size: 11px; padding: 6px 14px; }
+    .hero-subtitle { font-size: 14px; padding: 0 8px; }
+
+    .tabs-wrap {
+      margin: 12px 0 20px;
+      padding: 8px 0;
+      /* Disable sticky on mobile - causes scroll issues on some browsers */
+      position: static;
+      background: transparent;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 4px 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { padding: 10px 16px; font-size: 13px; }
+    .tab .tab-count { font-size: 10px; padding: 1px 6px; }
+
+    .panel-header { margin-bottom: 16px; }
+    .panel-title { font-size: 24px; }
+    .meta-card { padding: 6px 12px; font-size: 12px; }
+
+    /* ----- Overview: hide table, show as cards ----- */
+    .overview-table {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .overview-table table,
+    .overview-table thead,
+    .overview-table tbody,
+    .overview-table tr,
+    .overview-table td { display: block; width: 100%; }
+    .overview-table thead { display: none; }
+    .overview-table tr {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(14, 165, 233, 0.18);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      padding: 14px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(14, 116, 144, 0.06);
+    }
+    .overview-table tr.current-round {
+      box-shadow: inset 0 0 0 2px var(--c-yellow), 0 0 16px rgba(234, 179, 8, 0.25);
+    }
+    .overview-table td {
+      border: none !important;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .overview-table td.round-cell {
+      justify-content: flex-start;
+      padding-bottom: 12px;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed rgba(14, 165, 233, 0.2) !important;
+      width: 100%;
+    }
+    .overview-table td.round-cell .round-num {
+      margin-bottom: 0;
+    }
+    .overview-table td.round-cell .round-time {
+      margin-top: 0;
+      font-size: 13px;
+      color: #0c4a6e;
+      font-weight: 600;
+    }
+    /* Add labels before each cell on mobile */
+    .overview-table td.match-cell::before,
+    .overview-table td.rest-text::before {
+      content: attr(data-label);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #64748b;
+      min-width: 70px;
+      flex-shrink: 0;
+    }
+    .overview-table td.match-cell {
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+    .overview-table td.match-cell > .match-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .overview-table td.rest-text {
+      font-size: 12px;
+      align-items: flex-start;
+    }
+    .overview-table td.rest-text .rest-content {
+      flex: 1;
+      line-height: 1.6;
+    }
+
+    .pair-chip { font-size: 12px; padding: 3px 8px; }
+    .match-vs { margin: 0 4px; font-size: 12px; }
+    .court-badge { font-size: 10px; padding: 2px 8px; margin-right: 6px; }
+
+    .round-card { padding: 16px; }
+    .rc-round-label { font-size: 22px; }
+    .schedule-grid { grid-template-columns: 1fr; }
+
+    .fab-group { bottom: 14px; right: 14px; gap: 8px; }
+    .print-btn { padding: 10px 14px; font-size: 12px; }
+    .print-btn svg { width: 15px; height: 15px; }
+    .back-top-btn { width: 42px; height: 42px; }
+    .back-top-btn svg { width: 18px; height: 18px; }
+  }
+
+  /* Small phones */
+  @media (max-width: 420px) {
+    .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .stat-pill { padding: 8px 10px; font-size: 12px; text-align: center; }
+    .tab { padding: 9px 14px; font-size: 12px; }
+    .panel-title { font-size: 20px; }
+    .panel-header { flex-direction: column; align-items: flex-start; }
+    .panel-meta { width: 100%; }
+    .meta-card { flex: 1; min-width: 0; text-align: center; }
+    /* Make print btn icon-only on tiny screens */
+    .print-btn { padding: 12px; }
+    .print-btn .print-label { display: none; }
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    .tabs-wrap, .print-btn, .hero-badge, .hero-stats, .fab-group, .back-top-btn { display: none !important; }
+    .hero { padding: 0 0 16px; }
+    h1.hero-title {
+      -webkit-text-fill-color: #0077b6 !important;
+      color: #0077b6 !important;
+      font-size: 36px;
+    }
+    .hero-subtitle { color: #666 !important; }
+    .panel { display: block !important; page-break-after: always; }
+    .panel:last-child { page-break-after: auto; }
+    .panel-title { color: #ff5400 !important; -webkit-text-fill-color: #ff5400 !important; }
+    .overview-table, .round-card {
+      background: white !important;
+      border: 1px solid #ddd !important;
+      box-shadow: none !important;
+      break-inside: avoid;
+    }
+    thead th {
+      background: #f0f0f0 !important;
+      color: black !important;
+    }
+    tbody td, .rc-value, .meta-card strong { color: black !important; }
+    .pair-chip { color: #0077b6 !important; background: #e0f2fe !important; }
+    .pair-chip-2 { color: #c2410c !important; background: #ffedd5 !important; }
+    .schedule-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    tbody tr.current-round, .round-card.current {
+      background: white !important;
+      box-shadow: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>Live Schedule · Badminton Tournament</span>
+    </div>
+    <h1 class="hero-title">LỊCH THI ĐẤU <span class="accent">CẦU LÔNG</span></h1>
+    <p class="hero-subtitle">🏸 14 người · 7 cặp đôi · 2 sân · 10 lượt · 15 phút/lượt</p>
+    <div class="hero-stats">
+      <div class="stat-pill"><strong>7</strong>Cặp đôi</div>
+      <div class="stat-pill"><strong>10</strong>Lượt đấu</div>
+      <div class="stat-pill"><strong>2</strong>Sân (7 & 8)</div>
+      <div class="stat-pill"><strong>20</strong>Trận đấu</div>
+    </div>
+  </header>
+
+  <!-- TABS -->
+  <nav class="tabs-wrap">
+    <div class="tabs" id="tabs"></div>
+  </nav>
+
+  <!-- PANELS CONTAINER -->
+  <main id="panels">
+    <noscript>
+      <div style="padding: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: #fbbf24;">
+        ⚠️ Trang này cần JavaScript để hiển thị lịch. Vui lòng bật JavaScript trong trình duyệt.
+      </div>
+    </noscript>
+  </main>
+
+</div>
+
+<!-- FLOATING ACTIONS -->
+<div class="fab-group">
+  <button class="back-top-btn" id="backTopBtn" onclick="scrollToTop()" title="Lên đầu trang" aria-label="Lên đầu trang">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+  <button class="print-btn" onclick="window.print()" title="In hoặc lưu PDF">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+    </svg>
+    <span class="print-label">In / Xuất PDF</span>
+  </button>
+</div>
+
+<script>
+// ============ DATA ============
+const TIMES = [
+  "00:00 - 00:15", "00:15 - 00:30", "00:30 - 00:45", "00:45 - 01:00", "01:00 - 01:15",
+  "01:15 - 01:30", "01:30 - 01:45", "01:45 - 02:00", "02:00 - 02:15", "02:15 - 02:30"
+];
+
+const OVERVIEW = [
+  { c7: ["Duy - Diệu", "Tuân - Trâm"], c8: ["Xuân - Quang", "Duy em - Tin"], rest: ["Phong - Kim", "Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"] },
+  { c7: ["Phong - Kim", "Diệp - Bạn Diệp"], c8: ["Bạn Diệp 2 - Bạn Diệp 3", "Duy - Diệu"], rest: ["Tuân - Trâm", "Xuân - Quang", "Duy em - Tin"] },
+  { c7: ["Tuân - Trâm", "Xuân - Quang"], c8: ["Duy em - Tin", "Phong - Kim"], rest: ["Duy - Diệu", "Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"] },
+  { c7: ["Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"], c8: ["Duy - Diệu", "Tuân - Trâm"], rest: ["Xuân - Quang", "Duy em - Tin", "Phong - Kim"] },
+  { c7: ["Xuân - Quang", "Duy em - Tin"], c8: ["Phong - Kim", "Diệp - Bạn Diệp"], rest: ["Duy - Diệu", "Tuân - Trâm", "Bạn Diệp 2 - Bạn Diệp 3"] },
+  { c7: ["Bạn Diệp 2 - Bạn Diệp 3", "Duy - Diệu"], c8: ["Tuân - Trâm", "Xuân - Quang"], rest: ["Duy em - Tin", "Phong - Kim", "Diệp - Bạn Diệp"] },
+  { c7: ["Duy em - Tin", "Phong - Kim"], c8: ["Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"], rest: ["Duy - Diệu", "Tuân - Trâm", "Xuân - Quang"] },
+  { c7: ["Duy - Diệu", "Xuân - Quang"], c8: ["Tuân - Trâm", "Diệp - Bạn Diệp"], rest: ["Duy em - Tin", "Phong - Kim", "Bạn Diệp 2 - Bạn Diệp 3"] },
+  { c7: ["Duy em - Tin", "Bạn Diệp 2 - Bạn Diệp 3"], c8: ["Phong - Kim", "Duy - Diệu"], rest: ["Tuân - Trâm", "Xuân - Quang", "Diệp - Bạn Diệp"] },
+  { c7: ["Tuân - Trâm", "Phong - Kim"], c8: ["Xuân - Quang", "Diệp - Bạn Diệp"], rest: ["Duy - Diệu", "Duy em - Tin", "Bạn Diệp 2 - Bạn Diệp 3"] }
+];
+
+const PAIRS = [
+  { id: "duy-dieu", name: "Duy - Diệu", emoji: "🔥", schedule: [
+    { status: "play", court: "Sân 7", opp: "Tuân - Trâm" },
+    { status: "play", court: "Sân 8", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Tuân - Trâm" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Xuân - Quang" },
+    { status: "play", court: "Sân 8", opp: "Phong - Kim" },
+    { status: "rest" }
+  ]},
+  { id: "tuan-tram", name: "Tuân - Trâm", emoji: "⚡", schedule: [
+    { status: "play", court: "Sân 7", opp: "Duy - Diệu" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Xuân - Quang" },
+    { status: "play", court: "Sân 8", opp: "Duy - Diệu" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Xuân - Quang" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Phong - Kim" }
+  ]},
+  { id: "xuan-quang", name: "Xuân - Quang", emoji: "🌟", schedule: [
+    { status: "play", court: "Sân 8", opp: "Duy em - Tin" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Tuân - Trâm" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Duy em - Tin" },
+    { status: "play", court: "Sân 8", opp: "Tuân - Trâm" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Duy - Diệu" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" }
+  ]},
+  { id: "duyem-tin", name: "Duy em - Tin", emoji: "🚀", schedule: [
+    { status: "play", court: "Sân 8", opp: "Xuân - Quang" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Phong - Kim" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Xuân - Quang" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Phong - Kim" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
+    { status: "rest" }
+  ]},
+  { id: "phong-kim", name: "Phong - Kim", emoji: "💎", schedule: [
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Diệp - Bạn Diệp" },
+    { status: "play", court: "Sân 8", opp: "Duy em - Tin" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Duy em - Tin" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Duy - Diệu" },
+    { status: "play", court: "Sân 7", opp: "Tuân - Trâm" }
+  ]},
+  { id: "diep-bandiep", name: "Diệp - Bạn Diệp", emoji: "🎯", schedule: [
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Phong - Kim" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
+    { status: "play", court: "Sân 8", opp: "Phong - Kim" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
+    { status: "play", court: "Sân 8", opp: "Tuân - Trâm" },
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Xuân - Quang" }
+  ]},
+  { id: "bandiep23", name: "Bạn Diệp 2 - Bạn Diệp 3", emoji: "🏆", schedule: [
+    { status: "rest" },
+    { status: "play", court: "Sân 8", opp: "Duy - Diệu" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Diệp - Bạn Diệp" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Duy - Diệu" },
+    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" },
+    { status: "rest" },
+    { status: "play", court: "Sân 7", opp: "Duy em - Tin" },
+    { status: "rest" }
+  ]}
+];
+
+// ============ HELPERS ============
+function pairChip(name, alt = false) {
+  return `<span class="pair-chip${alt ? ' pair-chip-2' : ''}">${name}</span>`;
+}
+function courtBadge(court) {
+  const isC8 = court.includes("8");
+  return `<span class="court-badge${isC8 ? ' court-8' : ''}">${court}</span>`;
+}
+function countMatches(pair) {
+  return pair.schedule.filter(s => s.status === "play").length;
+}
+function countRests(pair) {
+  return pair.schedule.filter(s => s.status === "rest").length;
+}
+
+// ============ CURRENT ROUND (based on real time, since tournament starts at "00:00") ============
+// We treat the tournament as a relative timeline. Since there's no start date specified,
+// we'll highlight based on the current 15-min slot of the day, but only if it falls within first 2.5h.
+// More robust: just highlight nothing by default, OR allow simulation. For demo: show round 1 if no data.
+function getCurrentRoundIndex() {
+  // Find first round that has not yet started by elapsed minutes since midnight
+  const now = new Date();
+  const mins = now.getHours() * 60 + now.getMinutes();
+  // If user is within 0-150 minutes of midnight, show real round.
+  // Otherwise, just don't highlight any. (Tournament time is abstract.)
+  if (mins >= 0 && mins < 150) {
+    return Math.floor(mins / 15);
+  }
+  return -1; // No highlight
+}
+
+// ============ BUILD TABS ============
+const tabsContainer = document.getElementById('tabs');
+const panelsContainer = document.getElementById('panels');
+
+const allTabs = [
+  { id: 'overview', label: '📊 Tổng Quan', isOverview: true },
+  ...PAIRS.map(p => ({ id: p.id, label: `${p.emoji} ${p.name}`, count: countMatches(p) }))
+];
+
+allTabs.forEach((t, i) => {
+  const btn = document.createElement('button');
+  btn.className = `tab ${t.isOverview ? 'tab-overview' : ''} ${i === 0 ? 'active' : ''}`;
+  btn.dataset.target = t.id;
+  btn.innerHTML = t.label + (t.count !== undefined ? `<span class="tab-count">${t.count}</span>` : '');
+  btn.onclick = () => switchTab(t.id);
+  tabsContainer.appendChild(btn);
+});
+
+// ============ BUILD OVERVIEW PANEL ============
+const currentRound = getCurrentRoundIndex();
+
+const overviewPanel = document.createElement('section');
+overviewPanel.className = 'panel active';
+overviewPanel.id = 'panel-overview';
+
+overviewPanel.innerHTML = `
+  <div class="panel-header">
+    <h2 class="panel-title">📊 BẢNG TỔNG QUAN</h2>
+    <div class="panel-meta">
+      <div class="meta-card">Tổng:<strong>10 lượt</strong></div>
+      <div class="meta-card">Sân:<strong>7 & 8</strong></div>
+      <div class="meta-card">Mỗi lượt:<strong>15 phút</strong></div>
+    </div>
+  </div>
+  <div class="overview-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Lượt</th>
+          <th>🏸 Sân 7</th>
+          <th>🏸 Sân 8</th>
+          <th>💤 Cặp Nghỉ</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${OVERVIEW.map((r, i) => `
+          <tr class="${i === currentRound ? 'current-round' : ''}">
+            <td class="round-cell">
+              <span class="round-num">${i + 1}</span>
+              <span class="round-time">${TIMES[i]}</span>
+            </td>
+            <td class="match-cell" data-label="Sân 7">
+              <span class="match-content">${pairChip(r.c7[0])}<span class="match-vs">VS</span>${pairChip(r.c7[1], true)}</span>
+            </td>
+            <td class="match-cell" data-label="Sân 8">
+              <span class="match-content">${pairChip(r.c8[0])}<span class="match-vs">VS</span>${pairChip(r.c8[1], true)}</span>
+            </td>
+            <td class="rest-text" data-label="Nghỉ"><span class="rest-content">${r.rest.join(' · ')}</span></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div>
+`;
+panelsContainer.appendChild(overviewPanel);
+
+// ============ BUILD PAIR PANELS ============
+PAIRS.forEach(p => {
+  const matches = countMatches(p);
+  const rests = countRests(p);
+  const panel = document.createElement('section');
+  panel.className = 'panel';
+  panel.id = `panel-${p.id}`;
+  panel.innerHTML = `
+    <div class="panel-header">
+      <h2 class="panel-title">${p.emoji} CẶP ${p.name.toUpperCase()}</h2>
+      <div class="panel-meta">
+        <div class="meta-card">⚔️ Số trận:<strong>${matches}</strong></div>
+        <div class="meta-card">😴 Số lượt nghỉ:<strong>${rests}</strong></div>
+      </div>
+    </div>
+    <div class="schedule-grid">
+      ${p.schedule.map((s, i) => {
+        const isCurrent = i === currentRound;
+        if (s.status === 'play') {
+          return `
+            <div class="round-card play ${isCurrent ? 'current' : ''}">
+              <div class="rc-header">
+                <span class="rc-round-label">Lượt ${i + 1}</span>
+                <span class="rc-status play">⚡ Đánh</span>
+              </div>
+              <div class="rc-time">⏱ ${TIMES[i]}</div>
+              <div class="rc-detail">
+                <div class="rc-detail-row">
+                  <span class="rc-label">Sân</span>
+                  <span class="rc-value">${courtBadge(s.court)}</span>
+                </div>
+                <div class="rc-detail-row">
+                  <span class="rc-label">Đối thủ</span>
+                  <span class="rc-value">${s.opp}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="round-card rest ${isCurrent ? 'current' : ''}">
+              <div class="rc-header">
+                <span class="rc-round-label">Lượt ${i + 1}</span>
+                <span class="rc-status rest">💤 Nghỉ</span>
+              </div>
+              <div class="rc-time">⏱ ${TIMES[i]}</div>
+              <div class="rc-rest-msg">
+                <span class="ice">🧊</span>
+                Thư giãn, uống nước
+              </div>
+            </div>
+          `;
+        }
+      }).join('')}
+    </div>
+  `;
+  panelsContainer.appendChild(panel);
+});
+
+// ============ SWITCH TAB ============
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.target === id));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === `panel-${id}`));
+  // Use a small timeout to ensure tab rendered, then scroll. Avoids scroll-locks.
+  setTimeout(() => {
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      window.scrollTo(0, 0);
+    }
+  }, 50);
+}
+
+// ============ SCROLL TO TOP ============
+function scrollToTop() {
+  try {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (e) {
+    window.scrollTo(0, 0);
+  }
+}
+
+// ============ BACK-TO-TOP VISIBILITY ============
+const backTopBtn = document.getElementById('backTopBtn');
+function updateBackTop() {
+  if (window.scrollY > 400) {
+    backTopBtn.classList.add('visible');
+  } else {
+    backTopBtn.classList.remove('visible');
+  }
+}
+window.addEventListener('scroll', updateBackTop, { passive: true });
+updateBackTop();
+
+// ============ AUTO REFRESH HIGHLIGHT EVERY MINUTE ============
+setInterval(() => {
+  const newRound = getCurrentRoundIndex();
+  if (newRound !== window._lastRound) {
+    window._lastRound = newRound;
+    // Re-render only if highlight changes (light approach: reload).
+    // Simple: do nothing, refresh page if needed. To keep slim, we skip.
+  }
+}, 60000);
+</script>
+</body>
+</html>

@@ -856,8 +856,8 @@
 <script>
 // ============ DATA ============
 const TIMES = [
-  "00:00 - 00:15", "00:15 - 00:30", "00:30 - 00:45", "00:45 - 01:00", "01:00 - 01:15",
-  "01:15 - 01:30", "01:30 - 01:45", "01:45 - 02:00", "02:00 - 02:15", "02:15 - 02:30"
+  "19:00 - 19:15", "19:15 - 19:30", "19:30 - 19:45", "19:45 - 20:00", "20:00 - 20:15",
+  "20:15 - 20:30", "20:30 - 20:45", "20:45 - 21:00", "21:00 - 21:15", "21:15 - 21:30"
 ];
 
 const OVERVIEW = [
@@ -975,20 +975,18 @@ function countRests(pair) {
   return pair.schedule.filter(s => s.status === "rest").length;
 }
 
-// ============ CURRENT ROUND (based on real time, since tournament starts at "00:00") ============
-// We treat the tournament as a relative timeline. Since there's no start date specified,
-// we'll highlight based on the current 15-min slot of the day, but only if it falls within first 2.5h.
-// More robust: just highlight nothing by default, OR allow simulation. For demo: show round 1 if no data.
+// ============ CURRENT ROUND (based on real time) ============
+// Tournament: 19:00 - 21:30 (7pm - 9:30pm)
+// Round 1 starts at 19:00 = 19*60 = 1140 minutes from midnight
 function getCurrentRoundIndex() {
-  // Find first round that has not yet started by elapsed minutes since midnight
   const now = new Date();
   const mins = now.getHours() * 60 + now.getMinutes();
-  // If user is within 0-150 minutes of midnight, show real round.
-  // Otherwise, just don't highlight any. (Tournament time is abstract.)
-  if (mins >= 0 && mins < 150) {
-    return Math.floor(mins / 15);
+  const START_MIN = 19 * 60; // 19:00
+  const END_MIN = START_MIN + 10 * 15; // 21:30
+  if (mins >= START_MIN && mins < END_MIN) {
+    return Math.floor((mins - START_MIN) / 15);
   }
-  return -1; // No highlight
+  return -1; // No highlight outside tournament hours
 }
 
 // ============ BUILD TABS ============

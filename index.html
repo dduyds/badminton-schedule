@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="vi"><head>
+<html lang="vi">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#e0f2fe">
@@ -8,8 +9,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>🏸 LỊCH THI ĐẤU CẦU LÔNG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --c-bg: #e0f2fe;
@@ -1165,7 +1166,7 @@
   }
 </style>
 </head>
-<body class="" style="">
+<body>
 
 <div class="container">
 
@@ -1180,7 +1181,7 @@
     <div class="hero-stats">
       <div class="stat-pill"><strong>6</strong>Cặp đôi</div>
       <div class="stat-pill"><strong>12</strong>Lượt đấu</div>
-      <div class="stat-pill"><strong>2</strong>Sân (7 &amp; 8)</div>
+      <div class="stat-pill"><strong>2</strong>Sân (7 & 8)</div>
       <div class="stat-pill"><strong>24</strong>Trận đấu</div>
     </div>
   </header>
@@ -1191,11 +1192,13 @@
   </nav>
 
   <!-- PANELS CONTAINER -->
-  <main id="panels"><noscript>
+  <main id="panels">
+    <noscript>
       <div style="padding: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: #fbbf24;">
         ⚠️ Trang này cần JavaScript để hiển thị lịch. Vui lòng bật JavaScript trong trình duyệt.
       </div>
-    </noscript></main>
+    </noscript>
+  </main>
 
 </div>
 
@@ -1234,7 +1237,8 @@
   <div class="modal">
     <h2>🔒 Đăng nhập Admin</h2>
     <p class="modal-subtitle">Nhập mật khẩu để bật chế độ chỉnh sửa</p>
-    <input type="password" id="passwordInput" placeholder="Mật khẩu..." autocomplete="off" onkeydown="if(event.key==='Enter') submitPassword()">
+    <input type="password" id="passwordInput" placeholder="Mật khẩu..." autocomplete="off"
+           onkeydown="if(event.key==='Enter') submitPassword()">
     <div class="modal-error" id="passwordError"></div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeModal('passwordModal')">Huỷ</button>
@@ -1253,12 +1257,12 @@
       <strong>🚀 Đăng web ngay (Khuyên dùng):</strong> Tự động commit lên GitHub. Cả nhóm thấy sau 30-60 giây khi GitHub Pages build xong.<br><br>
       <strong>📥 Tải file (Thủ công):</strong> Tải file HTML về để bạn tự upload lên GitHub.
     </div>
-    <div class="gh-status connected" id="ghStatus"><span class="dot"></span><span id="ghStatusText">Đã kết nối: <strong>dduyds/badminton-schedule</strong></span></div>
+    <div class="gh-status" id="ghStatus"><span class="dot"></span><span id="ghStatusText">Đang kiểm tra GitHub...</span></div>
     <div class="modal-actions" style="margin-top: 14px;">
       <button class="btn btn-secondary" onclick="closeModal('saveModal')">Huỷ</button>
       <button class="btn btn-secondary" onclick="saveLocal()">🧑 Chỉ tôi</button>
       <button class="btn btn-secondary" onclick="exportPublic()">📥 Tải file</button>
-      <button class="btn btn-orange" id="publishBtn" onclick="publishToGitHub()" title="" style="opacity: 1; cursor: pointer;">🚀 Đăng web</button>
+      <button class="btn btn-orange" id="publishBtn" onclick="publishToGitHub()">🚀 Đăng web</button>
     </div>
   </div>
 </div>
@@ -1275,7 +1279,7 @@
       3. Bấm <strong>Generate token</strong> → copy token bắt đầu bằng <code>ghp_...</code><br>
       4. Dán vào ô bên dưới
       <br>
-      <a href="https://github.com/settings/tokens/new?description=badminton-schedule&amp;scopes=public_repo" target="_blank" rel="noopener" class="setup-link">🔗 Mở trang tạo Token</a>
+      <a href="https://github.com/settings/tokens/new?description=badminton-schedule&scopes=public_repo" target="_blank" rel="noopener" class="setup-link">🔗 Mở trang tạo Token</a>
     </div>
     <input type="text" id="ghTokenInput" placeholder="ghp_..." autocomplete="off" spellcheck="false" style="font-family: monospace; font-size: 13px;">
     <div class="modal-error" id="ghSetupError"></div>
@@ -1287,10 +1291,10 @@
 </div>
 
 <!-- PUBLISHING OVERLAY -->
-<div class="publishing-overlay visible" id="publishOverlay">
+<div class="publishing-overlay" id="publishOverlay">
   <div class="spinner"></div>
-  <div class="msg" id="publishMsg">Đang tạo file mới...</div>
-  <div class="sub" id="publishSub">Áp dụng tên đã đổi</div>
+  <div class="msg" id="publishMsg">Đang đăng lên GitHub...</div>
+  <div class="sub" id="publishSub">Đang tải file HTML mới lên repository</div>
 </div>
 
 <script>
@@ -1309,7 +1313,7 @@ const COURT_NAMES = META.court_names;
 // ============ HELPERS ============
 
 // ===== RENAMES: mapping from original name → display name =====
-const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ {"Phong - Kim":"Duy - Diệu","Duy - Diệu":"Kim - XPhong"};
+const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ {};
 let RENAMES = {};
 try {
   const stored = localStorage.getItem('badminton_renames');
@@ -1552,7 +1556,15 @@ setInterval(() => {
 const ADMIN_PASSWORD_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
 
 // ============ GITHUB CONFIG ============
-const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ {"owner":"dduyds","repo":"badminton-schedule","branch":"main","filePath":"index.html","encryptedToken":{"iv":"c0736f9a8fe941f16ae14078","salt":"09a53d97b3708cc183e47285ead9cc69","ct":"4a89fa95405a00324396a3fae12e15c7f831f74bac61a929be68789f6be92f14c1bbf6125156502167e3a27db97806ff3c04e35d24736ebc"}};
+const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ {
+  owner: "dduyds",
+  repo: "badminton-schedule",
+  branch: "main",
+  filePath: "index.html",
+  // Encrypted token (AES-GCM, key derived from admin password via PBKDF2)
+  // Format: {iv: hex, salt: hex, ct: hex}. Empty until user sets it up.
+  encryptedToken: null
+};
 
 let isEditMode = false;
 let cachedAdminPassword = null; // Cached during edit session for token decryption
@@ -1756,52 +1768,35 @@ function exportPublic() {
 }
 
 function generateUpdatedHtml(allRenames) {
-  // Clone the document so we can clean up without affecting the live page
+  // Clone the document and serialize to HTML string
   const clone = document.documentElement.cloneNode(true);
 
-  // Clear JS-appended content so the new file's JS renders fresh:
-  // - Tabs container
-  // - Panels container (keep noscript fallback)
+  // Clear JS-appended content so re-render works on fresh load
   const tabsEl = clone.querySelector('#tabs');
   if (tabsEl) tabsEl.innerHTML = '';
   const panelsEl = clone.querySelector('#panels');
-  if (panelsEl) {
-    panelsEl.innerHTML = '<noscript>\n      <div style="padding: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: #fbbf24;">\n        ⚠️ Trang này cần JavaScript để hiển thị lịch. Vui lòng bật JavaScript trong trình duyệt.\n      </div>\n    </noscript>';
-  }
-  // Remove edit-mode class if present
-  const bodyEl = clone.querySelector('body');
-  if (bodyEl) {
-    bodyEl.classList.remove('edit-mode');
-  }
-  // Hide any open modals
+  if (panelsEl) panelsEl.innerHTML = '';
+  clone.querySelector('body')?.classList.remove('edit-mode');
   clone.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('visible'));
-  // Hide edit banner
-  const banner = clone.querySelector('#editBanner');
-  if (banner) banner.classList.remove('visible');
-  // Remove admin button active state
-  const admin = clone.querySelector('#adminBtn');
-  if (admin) admin.classList.remove('active');
-  // Clear back-to-top visible state
-  const btb = clone.querySelector('#backTopBtn');
-  if (btb) btb.classList.remove('visible');
+  clone.querySelector('#editBanner')?.classList.remove('visible');
+  clone.querySelector('#adminBtn')?.classList.remove('active');
+  clone.querySelector('#backTopBtn')?.classList.remove('visible');
 
   let html = '<!DOCTYPE html>\n' + clone.outerHTML;
 
-  // Replace BUILT_IN_RENAMES line
+  // Replace BUILT_IN_RENAMES
   const renamesJson = JSON.stringify(allRenames);
-  const newRenamesLine = `const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ ${renamesJson};`;
-  const renamesRe = /const BUILT_IN_RENAMES = \/\* __BUILT_IN_RENAMES__ \*\/ [^;]*;/;
-  if (renamesRe.test(html)) {
-    html = html.replace(renamesRe, newRenamesLine);
-  }
+  html = html.replace(
+    /const BUILT_IN_RENAMES = \/\* __BUILT_IN_RENAMES__ \*\/ [^;]*;/,
+    `const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ ${renamesJson};`
+  );
 
-  // Replace GITHUB_CONFIG line (preserve token!)
+  // Replace GITHUB_CONFIG (preserve token)
   const ghConfigJson = JSON.stringify(GITHUB_CONFIG);
-  const newGhLine = `const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ ${ghConfigJson};`;
-  const ghRe = /const GITHUB_CONFIG = \/\* __GITHUB_CONFIG__ \*\/ \{[\s\S]*?\};/;
-  if (ghRe.test(html)) {
-    html = html.replace(ghRe, newGhLine);
-  }
+  html = html.replace(
+    /const GITHUB_CONFIG = \/\* __GITHUB_CONFIG__ \*\/ \{[^}]*\};/,
+    `const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ ${ghConfigJson};`
+  );
 
   return html;
 }
@@ -1935,11 +1930,12 @@ async function publishToGitHub() {
   closeModal('saveModal');
   showPublishOverlay('Đang chuẩn bị...', 'Mã hóa & xác thực');
 
-  // AbortController for 30s timeout per request
-  const makeAbortSignal = () => {
+  // Helper: timeout 30s per fetch
+  const makeFetch = (url, opts = {}) => {
     const ctrl = new AbortController();
-    setTimeout(() => ctrl.abort(), 30000);
-    return ctrl.signal;
+    const tid = setTimeout(() => ctrl.abort(), 30000);
+    return fetch(url, { ...opts, signal: ctrl.signal })
+      .finally(() => clearTimeout(tid));
   };
 
   try {
@@ -1947,41 +1943,34 @@ async function publishToGitHub() {
     const { owner, repo, branch, filePath } = GITHUB_CONFIG;
 
     // Step 1: Get current file SHA
-    showPublishOverlay('Đang tải thông tin file...', `${owner}/${repo}/${filePath}`);
-    const getResp = await fetch(
+    showPublishOverlay('Đang kết nối GitHub...', `${owner}/${repo}`);
+    const getResp = await makeFetch(
       `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`,
-      {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
-        signal: makeAbortSignal()
-      }
+      { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } }
     );
-    if (!getResp.ok) {
-      throw new Error(`Không lấy được file: ${getResp.status}`);
-    }
-    const fileInfo = await getResp.json();
-    const oldSha = fileInfo.sha;
+    if (!getResp.ok) throw new Error(`Không lấy được file từ GitHub: ${getResp.status}`);
+    const { sha: oldSha } = await getResp.json();
 
-    // Step 2: Generate new HTML
+    // Step 2: Generate HTML — yield to browser first so overlay renders
     showPublishOverlay('Đang tạo file mới...', 'Áp dụng tên đã đổi');
-    await new Promise(r => setTimeout(r, 30)); // let UI update before heavy work
+    await new Promise(r => setTimeout(r, 50));
     const allRenames = { ...BUILT_IN_RENAMES, ...RENAMES };
     const newHtml = generateUpdatedHtml(allRenames);
 
-    // Step 3: Encode to base64 — dùng Blob+FileReader, nhanh và không block UI
-    showPublishOverlay('Đang mã hóa file...', `${Math.round(newHtml.length / 1024)} KB`);
-    await new Promise(r => setTimeout(r, 20));
-    const b64 = await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = () => reject(new Error('Lỗi khi mã hóa file'));
-      reader.readAsDataURL(new Blob([newHtml], { type: 'text/html;charset=utf-8' }));
+    // Step 3: Base64 via FileReader (async, doesn't block UI)
+    showPublishOverlay('Đang mã hóa...', `${(newHtml.length / 1024).toFixed(0)} KB`);
+    await new Promise(r => setTimeout(r, 30));
+    const b64 = await new Promise((res, rej) => {
+      const fr = new FileReader();
+      fr.onload = () => res(fr.result.split(',')[1]);
+      fr.onerror = () => rej(new Error('Lỗi mã hóa base64'));
+      fr.readAsDataURL(new Blob([newHtml], { type: 'text/html;charset=utf-8' }));
     });
 
-    // Step 4: PUT to update file
-    const renameCount = Object.keys(allRenames).length;
-    const commitMsg = `Update lịch (${renameCount} tên đã đổi) [${new Date().toISOString().split('T')[0]}]`;
-    showPublishOverlay('Đang đăng lên GitHub...', 'Commit & push');
-    const putResp = await fetch(
+    // Step 4: Commit to GitHub
+    showPublishOverlay('Đang đăng lên GitHub...', 'Vui lòng chờ...');
+    const commitMsg = `Update lịch (${Object.keys(allRenames).length} tên) [${new Date().toISOString().split('T')[0]}]`;
+    const putResp = await makeFetch(
       `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
       {
         method: 'PUT',
@@ -1990,30 +1979,27 @@ async function publishToGitHub() {
           Accept: 'application/vnd.github+json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: commitMsg, content: b64, sha: oldSha, branch }),
-        signal: makeAbortSignal()
+        body: JSON.stringify({ message: commitMsg, content: b64, sha: oldSha, branch })
       }
     );
     if (!putResp.ok) {
-      const errData = await putResp.json().catch(() => ({}));
-      throw new Error(`GitHub trả lỗi: ${errData.message || putResp.status}`);
+      const err = await putResp.json().catch(() => ({}));
+      throw new Error(`GitHub từ chối: ${err.message || putResp.status}`);
     }
 
     hidePublishOverlay();
     RENAMES = {};
-    try { localStorage.removeItem('badminton_renames'); } catch (e) {}
-    const pagesUrl = `https://${owner}.github.io/${repo}/`;
-    alert(`🎉 Đăng thành công!\n\nGitHub Pages đang rebuild (mất ~30-60 giây).\n\nLink:\n${pagesUrl}\n\nF5 lại sau 1 phút để thấy tên mới.`);
+    try { localStorage.removeItem('badminton_renames'); } catch (_) {}
+    alert(`🎉 Đăng thành công!\n\nGitHub Pages đang rebuild (~30-60 giây).\nhttps://${owner}.github.io/${repo}/\n\nF5 lại sau 1 phút để thấy tên mới.`);
   } catch (e) {
     hidePublishOverlay();
     const msg = e.name === 'AbortError'
-      ? 'Quá thời gian chờ (30s). Kiểm tra kết nối mạng rồi thử lại.'
+      ? 'Timeout sau 30 giây. Kiểm tra kết nối mạng rồi thử lại.'
       : e.message;
-    alert(`❌ Lỗi:\n\n${msg}\n\nVui lòng thử lại hoặc dùng "📥 Tải file".`);
+    alert(`❌ Lỗi:\n${msg}\n\nDùng "📥 Tải file" để upload thủ công.`);
     openModal('saveModal');
   }
 }
 </script>
-
-
-</body><ddict-div style="visibility: visible !important;"></ddict-div></html>
+</body>
+</html>

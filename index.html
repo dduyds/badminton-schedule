@@ -1300,7 +1300,7 @@
 <script>
 // ============ DATA (injected by renderer) ============
 // __SCHEDULE_DATA__ is a JSON object with: meta, pairs, overview, pair_schedules, times, start_time_minutes
-const SCHEDULE_DATA = {"meta": {"num_rounds": 12, "num_courts": 2, "num_pairs": 6, "num_people": 12, "minutes_per_round": 12, "court_names": ["SÂN 7", "SÂN 8"]}, "pairs": [{"id": "duy-em-tin", "name": "Duy em - Tin", "emoji": "🔥"}, {"id": "diep-ban-diep", "name": "Diệp - Bạn Diệp", "emoji": "⚡"}, {"id": "phong-kim", "name": "Phong - Kim", "emoji": "🌟"}, {"id": "ban-diep-2-3", "name": "Bạn Diệp 2 - 3", "emoji": "🚀"}, {"id": "duy-dieu", "name": "Duy - Diệu", "emoji": "💎"}, {"id": "tuan-tram", "name": "Tuân - Trâm", "emoji": "🎯"}], "overview": [{"round": 1, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Phong - Kim", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 2, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 3, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Bạn Diệp 2 - 3"}, {"name": "SÂN 8", "pair_a": "Phong - Kim", "pair_b": "Diệp - Bạn Diệp"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 4, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Bạn Diệp 2 - 3"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Diệp - Bạn Diệp"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 5, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Phong - Kim"}, {"name": "SÂN 8", "pair_a": "Diệp - Bạn Diệp", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 6, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Duy em - Tin"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Phong - Kim"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}, {"round": 7, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Phong - Kim", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 8, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Phong - Kim"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Duy em - Tin"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}, {"round": 9, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 10, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Duy em - Tin"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Phong - Kim"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}, {"round": 11, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Bạn Diệp 2 - 3"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Diệp - Bạn Diệp"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 12, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Phong - Kim"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Duy em - Tin"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}], "pair_schedules": {"duy-em-tin": [{"round": 1, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 2, "status": "rest"}, {"round": 3, "status": "play", "court": "Sân 7", "opponent": "Bạn Diệp 2 - 3"}, {"round": 4, "status": "rest"}, {"round": 5, "status": "play", "court": "Sân 7", "opponent": "Phong - Kim"}, {"round": 6, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 7, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 8, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 9, "status": "rest"}, {"round": 10, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 11, "status": "rest"}, {"round": 12, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}], "diep-ban-diep": [{"round": 1, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 2, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 3, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 4, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 5, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 6, "status": "rest"}, {"round": 7, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 8, "status": "rest"}, {"round": 9, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 10, "status": "rest"}, {"round": 11, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 12, "status": "rest"}], "phong-kim": [{"round": 1, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 2, "status": "rest"}, {"round": 3, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 4, "status": "rest"}, {"round": 5, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 6, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 7, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 8, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 9, "status": "rest"}, {"round": 10, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 11, "status": "rest"}, {"round": 12, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}], "ban-diep-2-3": [{"round": 1, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 2, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 3, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 4, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 5, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 6, "status": "rest"}, {"round": 7, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 8, "status": "rest"}, {"round": 9, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 10, "status": "rest"}, {"round": 11, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 12, "status": "rest"}], "duy-dieu": [{"round": 1, "status": "rest"}, {"round": 2, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 3, "status": "rest"}, {"round": 4, "status": "play", "court": "Sân 7", "opponent": "Bạn Diệp 2 - 3"}, {"round": 5, "status": "rest"}, {"round": 6, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 7, "status": "rest"}, {"round": 8, "status": "play", "court": "Sân 7", "opponent": "Phong - Kim"}, {"round": 9, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 10, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 11, "status": "play", "court": "Sân 7", "opponent": "Bạn Diệp 2 - 3"}, {"round": 12, "status": "play", "court": "Sân 7", "opponent": "Phong - Kim"}], "tuan-tram": [{"round": 1, "status": "rest"}, {"round": 2, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 3, "status": "rest"}, {"round": 4, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 5, "status": "rest"}, {"round": 6, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 7, "status": "rest"}, {"round": 8, "status": "play", "court": "Sân 8", "opponent": "Duy em - Tin"}, {"round": 9, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 10, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 11, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 12, "status": "play", "court": "Sân 8", "opponent": "Duy em - Tin"}]}, "times": ["19:00 - 19:12", "19:12 - 19:24", "19:24 - 19:36", "19:36 - 19:48", "19:48 - 20:00", "20:00 - 20:12", "20:12 - 20:24", "20:24 - 20:36", "20:36 - 20:48", "20:48 - 21:00", "21:00 - 21:12", "21:12 - 21:24"], "start_time_minutes": 1140};
+const SCHEDULE_DATA = {"meta":{"num_rounds":12,"num_courts":2,"num_pairs":6,"num_people":12,"minutes_per_round":12,"court_names":["SÂN 7","SÂN 8"]},"pairs":[{"id":"duy-em-tin","name":"Duy em - Tin","emoji":"🔥"},{"id":"diep-ban-diep","name":"Diệp - Bạn Diệp","emoji":"⚡"},{"id":"phong-kim","name":"Phong - Kim","emoji":"🌟"},{"id":"ban-diep-2-3","name":"Bạn Diệp 2 - 3","emoji":"🚀"},{"id":"duy-dieu","name":"Duy - Diệu","emoji":"💎"},{"id":"tuan-tram","name":"Tuân - Trâm","emoji":"🎯"}],"overview":[{"round":1,"courts":[{"name":"SÂN 7","pair_a":"Duy em - Tin","pair_b":"Diệp - Bạn Diệp"},{"name":"SÂN 8","pair_a":"Duy - Diệu","pair_b":"Bạn Diệp 2 - 3"}],"resting":["Phong - Kim","Tuân - Trâm"]},{"round":2,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Diệp - Bạn Diệp"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Bạn Diệp 2 - 3"}],"resting":["Duy em - Tin","Duy - Diệu"]},{"round":3,"courts":[{"name":"SÂN 7","pair_a":"Duy em - Tin","pair_b":"Bạn Diệp 2 - 3"},{"name":"SÂN 8","pair_a":"Duy - Diệu","pair_b":"Diệp - Bạn Diệp"}],"resting":["Phong - Kim","Tuân - Trâm"]},{"round":4,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Bạn Diệp 2 - 3"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Diệp - Bạn Diệp"}],"resting":["Duy em - Tin","Duy - Diệu"]},{"round":5,"courts":[{"name":"SÂN 7","pair_a":"Duy em - Tin","pair_b":"Duy - Diệu"},{"name":"SÂN 8","pair_a":"Diệp - Bạn Diệp","pair_b":"Bạn Diệp 2 - 3"}],"resting":["Phong - Kim","Tuân - Trâm"]},{"round":6,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Duy em - Tin"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Duy - Diệu"}],"resting":["Diệp - Bạn Diệp","Bạn Diệp 2 - 3"]},{"round":7,"courts":[{"name":"SÂN 7","pair_a":"Duy em - Tin","pair_b":"Diệp - Bạn Diệp"},{"name":"SÂN 8","pair_a":"Duy - Diệu","pair_b":"Bạn Diệp 2 - 3"}],"resting":["Phong - Kim","Tuân - Trâm"]},{"round":8,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Duy - Diệu"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Duy em - Tin"}],"resting":["Diệp - Bạn Diệp","Bạn Diệp 2 - 3"]},{"round":9,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Diệp - Bạn Diệp"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Bạn Diệp 2 - 3"}],"resting":["Duy em - Tin","Duy - Diệu"]},{"round":10,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Duy em - Tin"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Duy - Diệu"}],"resting":["Diệp - Bạn Diệp","Bạn Diệp 2 - 3"]},{"round":11,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Bạn Diệp 2 - 3"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Diệp - Bạn Diệp"}],"resting":["Duy em - Tin","Duy - Diệu"]},{"round":12,"courts":[{"name":"SÂN 7","pair_a":"Phong - Kim","pair_b":"Duy - Diệu"},{"name":"SÂN 8","pair_a":"Tuân - Trâm","pair_b":"Duy em - Tin"}],"resting":["Diệp - Bạn Diệp","Bạn Diệp 2 - 3"]}],"pair_schedules":{"duy-em-tin":[{"round":1,"status":"play","court":"Sân 7","opponent":"Diệp - Bạn Diệp"},{"round":2,"status":"rest"},{"round":3,"status":"play","court":"Sân 7","opponent":"Bạn Diệp 2 - 3"},{"round":4,"status":"rest"},{"round":5,"status":"play","court":"Sân 7","opponent":"Phong - Kim"},{"round":6,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":7,"status":"play","court":"Sân 7","opponent":"Diệp - Bạn Diệp"},{"round":8,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":9,"status":"rest"},{"round":10,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":11,"status":"rest"},{"round":12,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"}],"diep-ban-diep":[{"round":1,"status":"play","court":"Sân 7","opponent":"Duy em - Tin"},{"round":2,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":3,"status":"play","court":"Sân 8","opponent":"Phong - Kim"},{"round":4,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":5,"status":"play","court":"Sân 8","opponent":"Bạn Diệp 2 - 3"},{"round":6,"status":"rest"},{"round":7,"status":"play","court":"Sân 7","opponent":"Duy em - Tin"},{"round":8,"status":"rest"},{"round":9,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":10,"status":"rest"},{"round":11,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":12,"status":"rest"}],"phong-kim":[{"round":1,"status":"rest"},{"round":2,"status":"play","court":"Sân 7","opponent":"Diệp - Bạn Diệp"},{"round":3,"status":"rest"},{"round":4,"status":"play","court":"Sân 7","opponent":"Bạn Diệp 2 - 3"},{"round":5,"status":"rest"},{"round":6,"status":"play","court":"Sân 7","opponent":"Duy em - Tin"},{"round":7,"status":"rest"},{"round":8,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":9,"status":"play","court":"Sân 7","opponent":"Diệp - Bạn Diệp"},{"round":10,"status":"play","court":"Sân 7","opponent":"Duy em - Tin"},{"round":11,"status":"play","court":"Sân 7","opponent":"Bạn Diệp 2 - 3"},{"round":12,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"}],"ban-diep-2-3":[{"round":1,"status":"play","court":"Sân 8","opponent":"Phong - Kim"},{"round":2,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":3,"status":"play","court":"Sân 7","opponent":"Duy em - Tin"},{"round":4,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":5,"status":"play","court":"Sân 8","opponent":"Diệp - Bạn Diệp"},{"round":6,"status":"rest"},{"round":7,"status":"play","court":"Sân 8","opponent":"Phong - Kim"},{"round":8,"status":"rest"},{"round":9,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":10,"status":"rest"},{"round":11,"status":"play","court":"Sân 7","opponent":"Duy - Diệu"},{"round":12,"status":"rest"}],"duy-dieu":[{"round":1,"status":"play","court":"Sân 8","opponent":"Bạn Diệp 2 - 3"},{"round":2,"status":"rest"},{"round":3,"status":"play","court":"Sân 8","opponent":"Diệp - Bạn Diệp"},{"round":4,"status":"rest"},{"round":5,"status":"play","court":"Sân 7","opponent":"Duy em - Tin"},{"round":6,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":7,"status":"play","court":"Sân 8","opponent":"Bạn Diệp 2 - 3"},{"round":8,"status":"play","court":"Sân 7","opponent":"Phong - Kim"},{"round":9,"status":"rest"},{"round":10,"status":"play","court":"Sân 8","opponent":"Tuân - Trâm"},{"round":11,"status":"rest"},{"round":12,"status":"play","court":"Sân 7","opponent":"Phong - Kim"}],"tuan-tram":[{"round":1,"status":"rest"},{"round":2,"status":"play","court":"Sân 8","opponent":"Bạn Diệp 2 - 3"},{"round":3,"status":"rest"},{"round":4,"status":"play","court":"Sân 8","opponent":"Diệp - Bạn Diệp"},{"round":5,"status":"rest"},{"round":6,"status":"play","court":"Sân 8","opponent":"Phong - Kim"},{"round":7,"status":"rest"},{"round":8,"status":"play","court":"Sân 8","opponent":"Duy em - Tin"},{"round":9,"status":"play","court":"Sân 8","opponent":"Bạn Diệp 2 - 3"},{"round":10,"status":"play","court":"Sân 8","opponent":"Phong - Kim"},{"round":11,"status":"play","court":"Sân 8","opponent":"Diệp - Bạn Diệp"},{"round":12,"status":"play","court":"Sân 8","opponent":"Duy em - Tin"}]},"times":["19:00 - 19:12","19:12 - 19:24","19:24 - 19:36","19:36 - 19:48","19:48 - 20:00","20:00 - 20:12","20:12 - 20:24","20:24 - 20:36","20:36 - 20:48","20:48 - 21:00","21:00 - 21:12","21:12 - 21:24"],"start_time_minutes":1140};
 
 const META = SCHEDULE_DATA.meta;
 const PAIRS = SCHEDULE_DATA.pairs;
@@ -1768,35 +1768,52 @@ function exportPublic() {
 }
 
 function generateUpdatedHtml(allRenames) {
-  // Clone the document and serialize to HTML string
+  // Clone the document so we can clean up without affecting the live page
   const clone = document.documentElement.cloneNode(true);
 
-  // Clear JS-appended content so re-render works on fresh load
+  // Clear JS-appended content so the new file's JS renders fresh:
+  // - Tabs container
+  // - Panels container (keep noscript fallback)
   const tabsEl = clone.querySelector('#tabs');
   if (tabsEl) tabsEl.innerHTML = '';
   const panelsEl = clone.querySelector('#panels');
-  if (panelsEl) panelsEl.innerHTML = '';
-  clone.querySelector('body')?.classList.remove('edit-mode');
+  if (panelsEl) {
+    panelsEl.innerHTML = '<noscript>\n      <div style="padding: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: #fbbf24;">\n        ⚠️ Trang này cần JavaScript để hiển thị lịch. Vui lòng bật JavaScript trong trình duyệt.\n      </div>\n    </noscript>';
+  }
+  // Remove edit-mode class if present
+  const bodyEl = clone.querySelector('body');
+  if (bodyEl) {
+    bodyEl.classList.remove('edit-mode');
+  }
+  // Hide any open modals
   clone.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('visible'));
-  clone.querySelector('#editBanner')?.classList.remove('visible');
-  clone.querySelector('#adminBtn')?.classList.remove('active');
-  clone.querySelector('#backTopBtn')?.classList.remove('visible');
+  // Hide edit banner
+  const banner = clone.querySelector('#editBanner');
+  if (banner) banner.classList.remove('visible');
+  // Remove admin button active state
+  const admin = clone.querySelector('#adminBtn');
+  if (admin) admin.classList.remove('active');
+  // Clear back-to-top visible state
+  const btb = clone.querySelector('#backTopBtn');
+  if (btb) btb.classList.remove('visible');
 
   let html = '<!DOCTYPE html>\n' + clone.outerHTML;
 
-  // Replace BUILT_IN_RENAMES
+  // Replace BUILT_IN_RENAMES line
   const renamesJson = JSON.stringify(allRenames);
-  html = html.replace(
-    /const BUILT_IN_RENAMES = \/\* __BUILT_IN_RENAMES__ \*\/ [^;]*;/,
-    `const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ ${renamesJson};`
-  );
+  const newRenamesLine = `const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ ${renamesJson};`;
+  const renamesRe = /const BUILT_IN_RENAMES = \/\* __BUILT_IN_RENAMES__ \*\/ [^;]*;/;
+  if (renamesRe.test(html)) {
+    html = html.replace(renamesRe, newRenamesLine);
+  }
 
-  // Replace GITHUB_CONFIG (preserve token)
+  // Replace GITHUB_CONFIG line (preserve token!)
   const ghConfigJson = JSON.stringify(GITHUB_CONFIG);
-  html = html.replace(
-    /const GITHUB_CONFIG = \/\* __GITHUB_CONFIG__ \*\/ \{[^}]*\};/,
-    `const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ ${ghConfigJson};`
-  );
+  const newGhLine = `const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ ${ghConfigJson};`;
+  const ghRe = /const GITHUB_CONFIG = \/\* __GITHUB_CONFIG__ \*\/ \{[\s\S]*?\};/;
+  if (ghRe.test(html)) {
+    html = html.replace(ghRe, newGhLine);
+  }
 
   return html;
 }
@@ -1930,47 +1947,40 @@ async function publishToGitHub() {
   closeModal('saveModal');
   showPublishOverlay('Đang chuẩn bị...', 'Mã hóa & xác thực');
 
-  // Helper: timeout 30s per fetch
-  const makeFetch = (url, opts = {}) => {
-    const ctrl = new AbortController();
-    const tid = setTimeout(() => ctrl.abort(), 30000);
-    return fetch(url, { ...opts, signal: ctrl.signal })
-      .finally(() => clearTimeout(tid));
-  };
-
   try {
     const token = await getDecryptedToken();
     const { owner, repo, branch, filePath } = GITHUB_CONFIG;
 
-    // Step 1: Get current file SHA
-    showPublishOverlay('Đang kết nối GitHub...', `${owner}/${repo}`);
-    const getResp = await makeFetch(
+    // Step 1: Get current file SHA (required by GitHub API to update)
+    showPublishOverlay('Đang tải thông tin file...', `${owner}/${repo}/${filePath}`);
+    const getResp = await fetch(
       `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`,
       { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } }
     );
-    if (!getResp.ok) throw new Error(`Không lấy được file từ GitHub: ${getResp.status}`);
-    const { sha: oldSha } = await getResp.json();
+    if (!getResp.ok) {
+      throw new Error(`Không lấy được file: ${getResp.status}`);
+    }
+    const fileInfo = await getResp.json();
+    const oldSha = fileInfo.sha;
 
-    // Step 2: Generate HTML — yield to browser first so overlay renders
+    // Step 2: Generate new HTML
     showPublishOverlay('Đang tạo file mới...', 'Áp dụng tên đã đổi');
-    await new Promise(r => setTimeout(r, 50));
     const allRenames = { ...BUILT_IN_RENAMES, ...RENAMES };
     const newHtml = generateUpdatedHtml(allRenames);
 
-    // Step 3: Base64 via FileReader (async, doesn't block UI)
-    showPublishOverlay('Đang mã hóa...', `${(newHtml.length / 1024).toFixed(0)} KB`);
-    await new Promise(r => setTimeout(r, 30));
-    const b64 = await new Promise((res, rej) => {
-      const fr = new FileReader();
-      fr.onload = () => res(fr.result.split(',')[1]);
-      fr.onerror = () => rej(new Error('Lỗi mã hóa base64'));
-      fr.readAsDataURL(new Blob([newHtml], { type: 'text/html;charset=utf-8' }));
-    });
+    // Step 3: Encode to base64 (handle UTF-8 properly)
+    const utf8Bytes = new TextEncoder().encode(newHtml);
+    let binStr = '';
+    for (let i = 0; i < utf8Bytes.length; i++) {
+      binStr += String.fromCharCode(utf8Bytes[i]);
+    }
+    const b64 = btoa(binStr);
 
-    // Step 4: Commit to GitHub
-    showPublishOverlay('Đang đăng lên GitHub...', 'Vui lòng chờ...');
-    const commitMsg = `Update lịch (${Object.keys(allRenames).length} tên) [${new Date().toISOString().split('T')[0]}]`;
-    const putResp = await makeFetch(
+    // Step 4: PUT to update file
+    const renameCount = Object.keys(allRenames).length;
+    const commitMsg = `Update lịch cầu lông (${renameCount} tên đã đổi) [${new Date().toISOString().split('T')[0]}]`;
+    showPublishOverlay('Đang đăng lên GitHub...', 'Commit & push');
+    const putResp = await fetch(
       `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
       {
         method: 'PUT',
@@ -1979,24 +1989,29 @@ async function publishToGitHub() {
           Accept: 'application/vnd.github+json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: commitMsg, content: b64, sha: oldSha, branch })
+        body: JSON.stringify({
+          message: commitMsg,
+          content: b64,
+          sha: oldSha,
+          branch: branch
+        })
       }
     );
     if (!putResp.ok) {
-      const err = await putResp.json().catch(() => ({}));
-      throw new Error(`GitHub từ chối: ${err.message || putResp.status}`);
+      const errData = await putResp.json().catch(() => ({}));
+      throw new Error(`GitHub trả lỗi: ${errData.message || putResp.status}`);
     }
 
     hidePublishOverlay();
+    // Clear local renames - they're now baked into GitHub
     RENAMES = {};
-    try { localStorage.removeItem('badminton_renames'); } catch (_) {}
-    alert(`🎉 Đăng thành công!\n\nGitHub Pages đang rebuild (~30-60 giây).\nhttps://${owner}.github.io/${repo}/\n\nF5 lại sau 1 phút để thấy tên mới.`);
+    try { localStorage.removeItem('badminton_renames'); } catch (e) {}
+
+    const pagesUrl = `https://${owner}.github.io/${repo}/`;
+    alert(`🎉 Đăng thành công!\n\nGitHub Pages đang rebuild trang (mất ~30-60 giây).\n\nSau đó cả nhóm vào link sẽ thấy tên mới:\n${pagesUrl}\n\nF5 lại trang sau 1 phút để xem kết quả.`);
   } catch (e) {
     hidePublishOverlay();
-    const msg = e.name === 'AbortError'
-      ? 'Timeout sau 30 giây. Kiểm tra kết nối mạng rồi thử lại.'
-      : e.message;
-    alert(`❌ Lỗi:\n${msg}\n\nDùng "📥 Tải file" để upload thủ công.`);
+    alert(`❌ Lỗi khi đăng:\n\n${e.message}\n\nVui lòng thử lại hoặc dùng "📥 Tải file" để upload thủ công.`);
     openModal('saveModal');
   }
 }

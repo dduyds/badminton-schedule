@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>🏸 Lịch Thi Đấu Cầu Lông - Sân 7 & 8</title>
+<title>🏸 LỊCH THI ĐẤU CẦU LÔNG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -410,7 +410,7 @@
     letter-spacing: 0.5px;
     margin-right: 8px;
   }
-  .court-badge.court-8 {
+  .court-badge.court-alt {
     background: linear-gradient(135deg, #8b5cf6, #6d28d9);
   }
 
@@ -614,6 +614,370 @@
 
   .print-btn svg { width: 18px; height: 18px; }
 
+/* ===== ADMIN BUTTON ===== */
+  .admin-btn {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(14, 165, 233, 0.25);
+    color: #0c4a6e;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(14, 116, 144, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .admin-btn:hover { transform: translateY(-3px) scale(1.08); }
+  .admin-btn svg { width: 22px; height: 22px; }
+  .admin-btn.active {
+    background: linear-gradient(135deg, var(--c-orange), var(--c-orange-2));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+    animation: pulse-admin 2s infinite;
+  }
+  @keyframes pulse-admin {
+    0%, 100% { box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5); }
+    50% { box-shadow: 0 6px 28px rgba(249, 115, 22, 0.8); }
+  }
+
+  /* ===== MODAL ===== */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+  }
+  .modal-backdrop.visible { display: flex; }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn {
+    from { transform: scale(0.92) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .modal h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1.5px;
+    color: #0c4a6e;
+    margin-bottom: 6px;
+  }
+  .modal-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 22px;
+  }
+
+  .modal input[type="password"],
+  .modal input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(14, 165, 233, 0.25);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #0f172a;
+    background: white;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+  .modal input[type="password"]:focus,
+  .modal input[type="text"]:focus {
+    outline: none;
+    border-color: var(--c-blue);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+  }
+  .modal-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 8px;
+    min-height: 18px;
+    font-weight: 500;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    flex: 1;
+    min-width: 100px;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--c-blue), var(--c-blue-2));
+    color: white;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45); }
+  .btn-secondary {
+    background: rgba(148, 163, 184, 0.15);
+    color: #334155;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+  }
+  .btn-secondary:hover { background: rgba(148, 163, 184, 0.25); }
+  .btn-orange {
+    background: linear-gradient(135deg, var(--c-orange), var(--c-orange-2));
+    color: white;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  }
+  .btn-orange:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(249, 115, 22, 0.5); }
+
+  /* ===== EDIT MODE BANNER ===== */
+  .edit-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--c-orange), var(--c-orange-2));
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 90;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .edit-banner.visible { display: flex; }
+  .edit-banner-text { display: flex; align-items: center; gap: 8px; }
+  .edit-banner button {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 5px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .edit-banner button:hover { background: rgba(255, 255, 255, 0.35); }
+  body.edit-mode { padding-top: 48px; }
+
+  /* ===== EDITABLE PAIR NAMES ===== */
+  body.edit-mode .pair-name-editable {
+    cursor: pointer;
+    border-bottom: 2px dashed rgba(249, 115, 22, 0.6);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  body.edit-mode .pair-name-editable:hover {
+    background: rgba(249, 115, 22, 0.1);
+    border-bottom-style: solid;
+    border-bottom-color: var(--c-orange);
+  }
+  body.edit-mode .pair-name-editable::after {
+    content: '✏️';
+    font-size: 0.7em;
+    margin-left: 4px;
+    opacity: 0.6;
+  }
+  body.edit-mode .pair-name-editable:hover::after { opacity: 1; }
+
+  /* Tabs in edit mode: pair tabs (with data-orig-name) become rename targets */
+  body.edit-mode .tab[data-orig-name] {
+    border-color: rgba(249, 115, 22, 0.5);
+    border-style: dashed;
+    position: relative;
+  }
+  body.edit-mode .tab[data-orig-name]:hover {
+    background: rgba(249, 115, 22, 0.12) !important;
+    border-color: var(--c-orange);
+    border-style: solid;
+    color: #c2410c !important;
+  }
+  body.edit-mode .tab[data-orig-name].active {
+    /* Keep active styling but mark editable */
+    border-style: solid;
+  }
+  body.edit-mode .tab[data-orig-name]::after {
+    content: '✏️';
+    font-size: 11px;
+    margin-left: 2px;
+    opacity: 0.7;
+  }
+
+  /* ===== RENAME LIST IN MODAL ===== */
+  .rename-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0 20px;
+  }
+  .rename-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rename-row-label {
+    font-size: 12px;
+    color: #64748b;
+    min-width: 50px;
+    text-align: right;
+  }
+  .rename-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .rename-row input.changed {
+    border-color: var(--c-orange);
+    background: rgba(254, 215, 170, 0.2);
+  }
+  .rename-help {
+    font-size: 12px;
+    color: #64748b;
+    background: rgba(14, 165, 233, 0.06);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-left: 3px solid var(--c-blue);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  /* ===== GITHUB SETUP / STATUS ===== */
+  .setup-info {
+    font-size: 13px;
+    color: #475569;
+    background: rgba(14, 165, 233, 0.06);
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 3px solid var(--c-blue);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .setup-info code {
+    background: rgba(14, 165, 233, 0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #0c4a6e;
+  }
+  .setup-link {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #24292e, #1a1e22);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .setup-link:hover { background: #000; }
+
+  .gh-status {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(14, 165, 233, 0.06);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gh-status.connected { background: rgba(16, 185, 129, 0.1); color: #047857; }
+  .gh-status.error { background: rgba(220, 38, 38, 0.08); color: #b91c1c; }
+  .gh-status .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #94a3b8;
+  }
+  .gh-status.connected .dot { background: #10b981; box-shadow: 0 0 8px #10b981; }
+  .gh-status.error .dot { background: #ef4444; }
+
+  .publishing-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+  }
+  .publishing-overlay.visible { display: flex; }
+  .publishing-overlay .spinner {
+    width: 56px;
+    height: 56px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--c-orange);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .publishing-overlay .msg {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    max-width: 400px;
+    padding: 0 20px;
+  }
+  .publishing-overlay .sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    max-width: 400px;
+    padding: 0 20px;
+  }
+
   /* ===== RESPONSIVE ===== */
 
   /* Tablet & smaller */
@@ -813,12 +1177,12 @@
       <span>Live Schedule · Badminton Tournament</span>
     </div>
     <h1 class="hero-title">LỊCH THI ĐẤU <span class="accent">CẦU LÔNG</span></h1>
-    <p class="hero-subtitle">🏸 14 người · 7 cặp đôi · 2 sân · 10 lượt · 15 phút/lượt</p>
+    <p class="hero-subtitle">🏸 12 người · 6 cặp đôi · 2 sân · 12 lượt · 12 phút/lượt</p>
     <div class="hero-stats">
-      <div class="stat-pill"><strong>7</strong>Cặp đôi</div>
-      <div class="stat-pill"><strong>10</strong>Lượt đấu</div>
+      <div class="stat-pill"><strong>6</strong>Cặp đôi</div>
+      <div class="stat-pill"><strong>12</strong>Lượt đấu</div>
       <div class="stat-pill"><strong>2</strong>Sân (7 & 8)</div>
-      <div class="stat-pill"><strong>20</strong>Trận đấu</div>
+      <div class="stat-pill"><strong>24</strong>Trận đấu</div>
     </div>
   </header>
 
@@ -838,11 +1202,26 @@
 
 </div>
 
+<!-- EDIT MODE BANNER -->
+<div class="edit-banner" id="editBanner">
+  <div class="edit-banner-text">
+    <span>✏️</span>
+    <span>Đang ở chế độ chỉnh sửa - Click vào tên cặp để đổi</span>
+  </div>
+  <button onclick="openSaveDialog()">💾 Lưu thay đổi</button>
+  <button onclick="exitEditMode()">✖ Thoát</button>
+</div>
+
 <!-- FLOATING ACTIONS -->
 <div class="fab-group">
   <button class="back-top-btn" id="backTopBtn" onclick="scrollToTop()" title="Lên đầu trang" aria-label="Lên đầu trang">
     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+  <button class="admin-btn" id="adminBtn" onclick="handleAdminClick()" title="Chỉnh sửa (admin)" aria-label="Chỉnh sửa">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"></path>
     </svg>
   </button>
   <button class="print-btn" onclick="window.print()" title="In hoặc lưu PDF">
@@ -853,138 +1232,135 @@
   </button>
 </div>
 
+<!-- PASSWORD MODAL -->
+<div class="modal-backdrop" id="passwordModal" onclick="if(event.target===this) closeModal('passwordModal')">
+  <div class="modal">
+    <h2>🔒 Đăng nhập Admin</h2>
+    <p class="modal-subtitle">Nhập mật khẩu để bật chế độ chỉnh sửa</p>
+    <input type="password" id="passwordInput" placeholder="Mật khẩu..." autocomplete="off"
+           onkeydown="if(event.key==='Enter') submitPassword()">
+    <div class="modal-error" id="passwordError"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('passwordModal')">Huỷ</button>
+      <button class="btn btn-primary" onclick="submitPassword()">Đăng nhập</button>
+    </div>
+  </div>
+</div>
+
+<!-- SAVE DIALOG -->
+<div class="modal-backdrop" id="saveModal" onclick="if(event.target===this) closeModal('saveModal')">
+  <div class="modal">
+    <h2>💾 Lưu thay đổi</h2>
+    <p class="modal-subtitle">Chọn cách bạn muốn lưu các tên đã đổi</p>
+    <div class="rename-help">
+      <strong>🧑 Chỉ cho tôi:</strong> Lưu trên trình duyệt này. Người khác mở vẫn thấy tên gốc.<br><br>
+      <strong>🚀 Đăng web ngay (Khuyên dùng):</strong> Tự động commit lên GitHub. Cả nhóm thấy sau 30-60 giây khi GitHub Pages build xong.<br><br>
+      <strong>📥 Tải file (Thủ công):</strong> Tải file HTML về để bạn tự upload lên GitHub.
+    </div>
+    <div class="gh-status" id="ghStatus"><span class="dot"></span><span id="ghStatusText">Đang kiểm tra GitHub...</span></div>
+    <div class="modal-actions" style="margin-top: 14px;">
+      <button class="btn btn-secondary" onclick="closeModal('saveModal')">Huỷ</button>
+      <button class="btn btn-secondary" onclick="saveLocal()">🧑 Chỉ tôi</button>
+      <button class="btn btn-secondary" onclick="exportPublic()">📥 Tải file</button>
+      <button class="btn btn-orange" id="publishBtn" onclick="publishToGitHub()">🚀 Đăng web</button>
+    </div>
+  </div>
+</div>
+
+<!-- GITHUB SETUP DIALOG -->
+<div class="modal-backdrop" id="ghSetupModal" onclick="if(event.target===this) closeModal('ghSetupModal')">
+  <div class="modal">
+    <h2>🔧 Setup GitHub (1 lần)</h2>
+    <p class="modal-subtitle">Để tự động đăng tên mới lên web, cần GitHub Personal Access Token</p>
+    <div class="setup-info">
+      <strong>Cách tạo token (2 phút):</strong><br>
+      1. Mở link bên dưới (đã chọn sẵn quyền)<br>
+      2. Đặt tên (vd "badminton-schedule"), chọn expiration<br>
+      3. Bấm <strong>Generate token</strong> → copy token bắt đầu bằng <code>ghp_...</code><br>
+      4. Dán vào ô bên dưới
+      <br>
+      <a href="https://github.com/settings/tokens/new?description=badminton-schedule&scopes=public_repo" target="_blank" rel="noopener" class="setup-link">🔗 Mở trang tạo Token</a>
+    </div>
+    <input type="text" id="ghTokenInput" placeholder="ghp_..." autocomplete="off" spellcheck="false" style="font-family: monospace; font-size: 13px;">
+    <div class="modal-error" id="ghSetupError"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('ghSetupModal')">Huỷ</button>
+      <button class="btn btn-primary" onclick="saveGitHubToken()">Lưu Token</button>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLISHING OVERLAY -->
+<div class="publishing-overlay" id="publishOverlay">
+  <div class="spinner"></div>
+  <div class="msg" id="publishMsg">Đang đăng lên GitHub...</div>
+  <div class="sub" id="publishSub">Đang tải file HTML mới lên repository</div>
+</div>
+
 <script>
-// ============ DATA ============
-const TIMES = [
-  "19:00 - 19:15", "19:15 - 19:30", "19:30 - 19:45", "19:45 - 20:00", "20:00 - 20:15",
-  "20:15 - 20:30", "20:30 - 20:45", "20:45 - 21:00", "21:00 - 21:15", "21:15 - 21:30"
-];
+// ============ DATA (injected by renderer) ============
+// __SCHEDULE_DATA__ is a JSON object with: meta, pairs, overview, pair_schedules, times, start_time_minutes
+const SCHEDULE_DATA = {"meta": {"num_rounds": 12, "num_courts": 2, "num_pairs": 6, "num_people": 12, "minutes_per_round": 12, "court_names": ["SÂN 7", "SÂN 8"]}, "pairs": [{"id": "duy-em-tin", "name": "Duy em - Tin", "emoji": "🔥"}, {"id": "diep-ban-diep", "name": "Diệp - Bạn Diệp", "emoji": "⚡"}, {"id": "phong-kim", "name": "Phong - Kim", "emoji": "🌟"}, {"id": "ban-diep-2-3", "name": "Bạn Diệp 2 - 3", "emoji": "🚀"}, {"id": "duy-dieu", "name": "Duy - Diệu", "emoji": "💎"}, {"id": "tuan-tram", "name": "Tuân - Trâm", "emoji": "🎯"}], "overview": [{"round": 1, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Phong - Kim", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 2, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 3, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Bạn Diệp 2 - 3"}, {"name": "SÂN 8", "pair_a": "Phong - Kim", "pair_b": "Diệp - Bạn Diệp"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 4, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Bạn Diệp 2 - 3"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Diệp - Bạn Diệp"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 5, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Phong - Kim"}, {"name": "SÂN 8", "pair_a": "Diệp - Bạn Diệp", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 6, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Duy em - Tin"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Phong - Kim"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}, {"round": 7, "courts": [{"name": "SÂN 7", "pair_a": "Duy em - Tin", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Phong - Kim", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy - Diệu", "Tuân - Trâm"]}, {"round": 8, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Phong - Kim"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Duy em - Tin"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}, {"round": 9, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Diệp - Bạn Diệp"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Bạn Diệp 2 - 3"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 10, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Duy em - Tin"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Phong - Kim"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}, {"round": 11, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Bạn Diệp 2 - 3"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Diệp - Bạn Diệp"}], "resting": ["Duy em - Tin", "Phong - Kim"]}, {"round": 12, "courts": [{"name": "SÂN 7", "pair_a": "Duy - Diệu", "pair_b": "Phong - Kim"}, {"name": "SÂN 8", "pair_a": "Tuân - Trâm", "pair_b": "Duy em - Tin"}], "resting": ["Diệp - Bạn Diệp", "Bạn Diệp 2 - 3"]}], "pair_schedules": {"duy-em-tin": [{"round": 1, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 2, "status": "rest"}, {"round": 3, "status": "play", "court": "Sân 7", "opponent": "Bạn Diệp 2 - 3"}, {"round": 4, "status": "rest"}, {"round": 5, "status": "play", "court": "Sân 7", "opponent": "Phong - Kim"}, {"round": 6, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 7, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 8, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 9, "status": "rest"}, {"round": 10, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 11, "status": "rest"}, {"round": 12, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}], "diep-ban-diep": [{"round": 1, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 2, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 3, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 4, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 5, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 6, "status": "rest"}, {"round": 7, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 8, "status": "rest"}, {"round": 9, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 10, "status": "rest"}, {"round": 11, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 12, "status": "rest"}], "phong-kim": [{"round": 1, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 2, "status": "rest"}, {"round": 3, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 4, "status": "rest"}, {"round": 5, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 6, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 7, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 8, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 9, "status": "rest"}, {"round": 10, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 11, "status": "rest"}, {"round": 12, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}], "ban-diep-2-3": [{"round": 1, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 2, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 3, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 4, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 5, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 6, "status": "rest"}, {"round": 7, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 8, "status": "rest"}, {"round": 9, "status": "play", "court": "Sân 8", "opponent": "Tuân - Trâm"}, {"round": 10, "status": "rest"}, {"round": 11, "status": "play", "court": "Sân 7", "opponent": "Duy - Diệu"}, {"round": 12, "status": "rest"}], "duy-dieu": [{"round": 1, "status": "rest"}, {"round": 2, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 3, "status": "rest"}, {"round": 4, "status": "play", "court": "Sân 7", "opponent": "Bạn Diệp 2 - 3"}, {"round": 5, "status": "rest"}, {"round": 6, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 7, "status": "rest"}, {"round": 8, "status": "play", "court": "Sân 7", "opponent": "Phong - Kim"}, {"round": 9, "status": "play", "court": "Sân 7", "opponent": "Diệp - Bạn Diệp"}, {"round": 10, "status": "play", "court": "Sân 7", "opponent": "Duy em - Tin"}, {"round": 11, "status": "play", "court": "Sân 7", "opponent": "Bạn Diệp 2 - 3"}, {"round": 12, "status": "play", "court": "Sân 7", "opponent": "Phong - Kim"}], "tuan-tram": [{"round": 1, "status": "rest"}, {"round": 2, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 3, "status": "rest"}, {"round": 4, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 5, "status": "rest"}, {"round": 6, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 7, "status": "rest"}, {"round": 8, "status": "play", "court": "Sân 8", "opponent": "Duy em - Tin"}, {"round": 9, "status": "play", "court": "Sân 8", "opponent": "Bạn Diệp 2 - 3"}, {"round": 10, "status": "play", "court": "Sân 8", "opponent": "Phong - Kim"}, {"round": 11, "status": "play", "court": "Sân 8", "opponent": "Diệp - Bạn Diệp"}, {"round": 12, "status": "play", "court": "Sân 8", "opponent": "Duy em - Tin"}]}, "times": ["19:00 - 19:12", "19:12 - 19:24", "19:24 - 19:36", "19:36 - 19:48", "19:48 - 20:00", "20:00 - 20:12", "20:12 - 20:24", "20:24 - 20:36", "20:36 - 20:48", "20:48 - 21:00", "21:00 - 21:12", "21:12 - 21:24"], "start_time_minutes": 1140};
 
-const OVERVIEW = [
-  { c7: ["Duy - Diệu", "Tuân - Trâm"], c8: ["Xuân - Quang", "Duy em - Tin"], rest: ["Phong - Kim", "Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"] },
-  { c7: ["Phong - Kim", "Diệp - Bạn Diệp"], c8: ["Bạn Diệp 2 - Bạn Diệp 3", "Duy - Diệu"], rest: ["Tuân - Trâm", "Xuân - Quang", "Duy em - Tin"] },
-  { c7: ["Tuân - Trâm", "Xuân - Quang"], c8: ["Duy em - Tin", "Phong - Kim"], rest: ["Duy - Diệu", "Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"] },
-  { c7: ["Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"], c8: ["Duy - Diệu", "Tuân - Trâm"], rest: ["Xuân - Quang", "Duy em - Tin", "Phong - Kim"] },
-  { c7: ["Xuân - Quang", "Duy em - Tin"], c8: ["Phong - Kim", "Diệp - Bạn Diệp"], rest: ["Duy - Diệu", "Tuân - Trâm", "Bạn Diệp 2 - Bạn Diệp 3"] },
-  { c7: ["Bạn Diệp 2 - Bạn Diệp 3", "Duy - Diệu"], c8: ["Tuân - Trâm", "Xuân - Quang"], rest: ["Duy em - Tin", "Phong - Kim", "Diệp - Bạn Diệp"] },
-  { c7: ["Duy em - Tin", "Phong - Kim"], c8: ["Diệp - Bạn Diệp", "Bạn Diệp 2 - Bạn Diệp 3"], rest: ["Duy - Diệu", "Tuân - Trâm", "Xuân - Quang"] },
-  { c7: ["Duy - Diệu", "Xuân - Quang"], c8: ["Tuân - Trâm", "Diệp - Bạn Diệp"], rest: ["Duy em - Tin", "Phong - Kim", "Bạn Diệp 2 - Bạn Diệp 3"] },
-  { c7: ["Duy em - Tin", "Bạn Diệp 2 - Bạn Diệp 3"], c8: ["Phong - Kim", "Duy - Diệu"], rest: ["Tuân - Trâm", "Xuân - Quang", "Diệp - Bạn Diệp"] },
-  { c7: ["Tuân - Trâm", "Phong - Kim"], c8: ["Xuân - Quang", "Diệp - Bạn Diệp"], rest: ["Duy - Diệu", "Duy em - Tin", "Bạn Diệp 2 - Bạn Diệp 3"] }
-];
-
-const PAIRS = [
-  { id: "duy-dieu", name: "Duy - Diệu", emoji: "🔥", schedule: [
-    { status: "play", court: "Sân 7", opp: "Tuân - Trâm" },
-    { status: "play", court: "Sân 8", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Tuân - Trâm" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Xuân - Quang" },
-    { status: "play", court: "Sân 8", opp: "Phong - Kim" },
-    { status: "rest" }
-  ]},
-  { id: "tuan-tram", name: "Tuân - Trâm", emoji: "⚡", schedule: [
-    { status: "play", court: "Sân 7", opp: "Duy - Diệu" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Xuân - Quang" },
-    { status: "play", court: "Sân 8", opp: "Duy - Diệu" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Xuân - Quang" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Phong - Kim" }
-  ]},
-  { id: "xuan-quang", name: "Xuân - Quang", emoji: "🌟", schedule: [
-    { status: "play", court: "Sân 8", opp: "Duy em - Tin" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Tuân - Trâm" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Duy em - Tin" },
-    { status: "play", court: "Sân 8", opp: "Tuân - Trâm" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Duy - Diệu" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" }
-  ]},
-  { id: "duyem-tin", name: "Duy em - Tin", emoji: "🚀", schedule: [
-    { status: "play", court: "Sân 8", opp: "Xuân - Quang" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Phong - Kim" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Xuân - Quang" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Phong - Kim" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
-    { status: "rest" }
-  ]},
-  { id: "phong-kim", name: "Phong - Kim", emoji: "💎", schedule: [
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Diệp - Bạn Diệp" },
-    { status: "play", court: "Sân 8", opp: "Duy em - Tin" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Duy em - Tin" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Duy - Diệu" },
-    { status: "play", court: "Sân 7", opp: "Tuân - Trâm" }
-  ]},
-  { id: "diep-bandiep", name: "Diệp - Bạn Diệp", emoji: "🎯", schedule: [
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Phong - Kim" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
-    { status: "play", court: "Sân 8", opp: "Phong - Kim" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Bạn Diệp 2 - Bạn Diệp 3" },
-    { status: "play", court: "Sân 8", opp: "Tuân - Trâm" },
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Xuân - Quang" }
-  ]},
-  { id: "bandiep23", name: "Bạn Diệp 2 - Bạn Diệp 3", emoji: "🏆", schedule: [
-    { status: "rest" },
-    { status: "play", court: "Sân 8", opp: "Duy - Diệu" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Diệp - Bạn Diệp" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Duy - Diệu" },
-    { status: "play", court: "Sân 8", opp: "Diệp - Bạn Diệp" },
-    { status: "rest" },
-    { status: "play", court: "Sân 7", opp: "Duy em - Tin" },
-    { status: "rest" }
-  ]}
-];
+const META = SCHEDULE_DATA.meta;
+const PAIRS = SCHEDULE_DATA.pairs;
+const OVERVIEW = SCHEDULE_DATA.overview;
+const PAIR_SCHEDULES = SCHEDULE_DATA.pair_schedules;
+const TIMES = SCHEDULE_DATA.times;
+const START_MIN = SCHEDULE_DATA.start_time_minutes; // minutes from midnight of round 1
+const COURT_NAMES = META.court_names;
 
 // ============ HELPERS ============
+
+// ===== RENAMES: mapping from original name → display name =====
+const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ {};
+let RENAMES = {};
+try {
+  const stored = localStorage.getItem('badminton_renames');
+  RENAMES = stored ? JSON.parse(stored) : {};
+} catch (e) {
+  RENAMES = {};
+}
+function getActiveRenames() {
+  return { ...BUILT_IN_RENAMES, ...RENAMES };
+}
+function displayName(origName) {
+  if (!origName) return origName;
+  const renames = getActiveRenames();
+  return renames[origName] || origName;
+}
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function escapeAttr(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function pairChip(name, alt = false) {
-  return `<span class="pair-chip${alt ? ' pair-chip-2' : ''}">${name}</span>`;
+  if (!name) return '<span class="pair-chip">—</span>';
+  const disp = displayName(name);
+  return `<span class="pair-chip${alt ? ' pair-chip-2' : ''}"><span class="pair-name-editable" data-orig="${escapeAttr(name)}">${escapeHtml(disp)}</span></span>`;
 }
 function courtBadge(court) {
-  const isC8 = court.includes("8");
-  return `<span class="court-badge${isC8 ? ' court-8' : ''}">${court}</span>`;
+  // Use index-based color: court 0 = blue, court 1 = purple, etc.
+  const idx = COURT_NAMES.indexOf(court);
+  const colorClass = idx === 1 ? ' court-alt' : '';
+  return `<span class="court-badge${colorClass}">${court}</span>`;
 }
-function countMatches(pair) {
-  return pair.schedule.filter(s => s.status === "play").length;
+function countMatches(pairId) {
+  return (PAIR_SCHEDULES[pairId] || []).filter(s => s.status === "play").length;
 }
-function countRests(pair) {
-  return pair.schedule.filter(s => s.status === "rest").length;
+function countRests(pairId) {
+  return (PAIR_SCHEDULES[pairId] || []).filter(s => s.status === "rest").length;
 }
 
 // ============ CURRENT ROUND (based on real time) ============
-// Tournament: 19:00 - 21:30 (7pm - 9:30pm)
-// Round 1 starts at 19:00 = 19*60 = 1140 minutes from midnight
 function getCurrentRoundIndex() {
   const now = new Date();
   const mins = now.getHours() * 60 + now.getMinutes();
-  const START_MIN = 19 * 60; // 19:00
-  const END_MIN = START_MIN + 10 * 15; // 21:30
+  const END_MIN = START_MIN + META.num_rounds * META.minutes_per_round;
   if (mins >= START_MIN && mins < END_MIN) {
-    return Math.floor((mins - START_MIN) / 15);
+    return Math.floor((mins - START_MIN) / META.minutes_per_round);
   }
   return -1; // No highlight outside tournament hours
 }
@@ -995,21 +1371,31 @@ const panelsContainer = document.getElementById('panels');
 
 const allTabs = [
   { id: 'overview', label: '📊 Tổng Quan', isOverview: true },
-  ...PAIRS.map(p => ({ id: p.id, label: `${p.emoji} ${p.name}`, count: countMatches(p) }))
+  ...PAIRS.map(p => ({ id: p.id, label: `${p.emoji} ${displayName(p.name)}`, origName: p.name, count: countMatches(p.id) }))
 ];
 
 allTabs.forEach((t, i) => {
   const btn = document.createElement('button');
   btn.className = `tab ${t.isOverview ? 'tab-overview' : ''} ${i === 0 ? 'active' : ''}`;
   btn.dataset.target = t.id;
+  if (t.origName) btn.dataset.origName = t.origName;
   btn.innerHTML = t.label + (t.count !== undefined ? `<span class="tab-count">${t.count}</span>` : '');
-  btn.onclick = () => switchTab(t.id);
+  btn.onclick = (e) => {
+    if (isEditMode && t.origName) {
+      e.preventDefault();
+      e.stopPropagation();
+      renamePair(t.origName);
+      return;
+    }
+    switchTab(t.id);
+  };
   tabsContainer.appendChild(btn);
 });
 
 // ============ BUILD OVERVIEW PANEL ============
 const currentRound = getCurrentRoundIndex();
 
+const courtsLabel = COURT_NAMES.join(' & ').replace(/Sân /gi, '');
 const overviewPanel = document.createElement('section');
 overviewPanel.className = 'panel active';
 overviewPanel.id = 'panel-overview';
@@ -1018,9 +1404,9 @@ overviewPanel.innerHTML = `
   <div class="panel-header">
     <h2 class="panel-title">📊 BẢNG TỔNG QUAN</h2>
     <div class="panel-meta">
-      <div class="meta-card">Tổng:<strong>10 lượt</strong></div>
-      <div class="meta-card">Sân:<strong>7 & 8</strong></div>
-      <div class="meta-card">Mỗi lượt:<strong>15 phút</strong></div>
+      <div class="meta-card">Tổng:<strong>${META.num_rounds} lượt</strong></div>
+      <div class="meta-card">Sân:<strong>${courtsLabel}</strong></div>
+      <div class="meta-card">Mỗi lượt:<strong>${META.minutes_per_round} phút</strong></div>
     </div>
   </div>
   <div class="overview-table">
@@ -1028,8 +1414,7 @@ overviewPanel.innerHTML = `
       <thead>
         <tr>
           <th>Lượt</th>
-          <th>🏸 Sân 7</th>
-          <th>🏸 Sân 8</th>
+          ${COURT_NAMES.map(c => `<th>🏸 ${c}</th>`).join('')}
           <th>💤 Cặp Nghỉ</th>
         </tr>
       </thead>
@@ -1040,13 +1425,12 @@ overviewPanel.innerHTML = `
               <span class="round-num">${i + 1}</span>
               <span class="round-time">${TIMES[i]}</span>
             </td>
-            <td class="match-cell" data-label="Sân 7">
-              <span class="match-content">${pairChip(r.c7[0])}<span class="match-vs">VS</span>${pairChip(r.c7[1], true)}</span>
-            </td>
-            <td class="match-cell" data-label="Sân 8">
-              <span class="match-content">${pairChip(r.c8[0])}<span class="match-vs">VS</span>${pairChip(r.c8[1], true)}</span>
-            </td>
-            <td class="rest-text" data-label="Nghỉ"><span class="rest-content">${r.rest.join(' · ')}</span></td>
+            ${r.courts.map((c, ci) => `
+              <td class="match-cell" data-label="${c.name}">
+                <span class="match-content">${pairChip(c.pair_a)}<span class="match-vs">VS</span>${pairChip(c.pair_b, true)}</span>
+              </td>
+            `).join('')}
+            <td class="rest-text" data-label="Nghỉ"><span class="rest-content">${r.resting.map(n => `<span class="pair-name-editable" data-orig="${escapeAttr(n)}">${escapeHtml(displayName(n))}</span>`).join(' · ')}</span></td>
           </tr>
         `).join('')}
       </tbody>
@@ -1057,21 +1441,22 @@ panelsContainer.appendChild(overviewPanel);
 
 // ============ BUILD PAIR PANELS ============
 PAIRS.forEach(p => {
-  const matches = countMatches(p);
-  const rests = countRests(p);
+  const schedule = PAIR_SCHEDULES[p.id] || [];
+  const matches = countMatches(p.id);
+  const rests = countRests(p.id);
   const panel = document.createElement('section');
   panel.className = 'panel';
   panel.id = `panel-${p.id}`;
   panel.innerHTML = `
     <div class="panel-header">
-      <h2 class="panel-title">${p.emoji} CẶP ${p.name.toUpperCase()}</h2>
+      <h2 class="panel-title">${p.emoji} CẶP <span class="pair-name-editable" data-orig="${escapeAttr(p.name)}">${escapeHtml(displayName(p.name).toUpperCase())}</span></h2>
       <div class="panel-meta">
         <div class="meta-card">⚔️ Số trận:<strong>${matches}</strong></div>
         <div class="meta-card">😴 Số lượt nghỉ:<strong>${rests}</strong></div>
       </div>
     </div>
     <div class="schedule-grid">
-      ${p.schedule.map((s, i) => {
+      ${schedule.map((s, i) => {
         const isCurrent = i === currentRound;
         if (s.status === 'play') {
           return `
@@ -1088,7 +1473,7 @@ PAIRS.forEach(p => {
                 </div>
                 <div class="rc-detail-row">
                   <span class="rc-label">Đối thủ</span>
-                  <span class="rc-value">${s.opp}</span>
+                  <span class="rc-value"><span class="pair-name-editable" data-orig="${escapeAttr(s.opponent)}">${escapeHtml(displayName(s.opponent))}</span></span>
                 </div>
               </div>
             </div>
@@ -1158,6 +1543,478 @@ setInterval(() => {
     // Simple: do nothing, refresh page if needed. To keep slim, we skip.
   }
 }, 60000);
+
+// ============================================================
+// ============ ADMIN: RENAME PAIRS FEATURE ===================
+// ============================================================
+
+// SHA-256 hash of password "admin123". Change this by computing
+// the SHA-256 of your new password and replacing the string below.
+// To set new password: in browser console run:
+//   crypto.subtle.digest('SHA-256', new TextEncoder().encode('newpass'))
+//     .then(b => console.log(Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')))
+const ADMIN_PASSWORD_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+
+// ============ GITHUB CONFIG ============
+const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ {
+  owner: "dduyds",
+  repo: "badminton-schedule",
+  branch: "main",
+  filePath: "index.html",
+  // Encrypted token (AES-GCM, key derived from admin password via PBKDF2)
+  // Format: {iv: hex, salt: hex, ct: hex}. Empty until user sets it up.
+  encryptedToken: null
+};
+
+let isEditMode = false;
+let cachedAdminPassword = null; // Cached during edit session for token decryption
+
+async function sha256Hex(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(x => x.toString(16).padStart(2, '0')).join('');
+}
+
+function handleAdminClick() {
+  if (isEditMode) {
+    exitEditMode();
+  } else {
+    openModal('passwordModal');
+    setTimeout(() => document.getElementById('passwordInput').focus(), 100);
+  }
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('visible');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('visible');
+  if (id === 'passwordModal') {
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordError').textContent = '';
+  }
+}
+
+async function submitPassword() {
+  const input = document.getElementById('passwordInput').value;
+  const errEl = document.getElementById('passwordError');
+  if (!input) {
+    errEl.textContent = 'Vui lòng nhập mật khẩu';
+    return;
+  }
+  const hash = await sha256Hex(input);
+  if (hash === ADMIN_PASSWORD_HASH) {
+    cachedAdminPassword = input; // Cache for token decryption
+    closeModal('passwordModal');
+    enterEditMode();
+  } else {
+    errEl.textContent = 'Sai mật khẩu, vui lòng thử lại';
+    document.getElementById('passwordInput').select();
+  }
+}
+
+function enterEditMode() {
+  isEditMode = true;
+  document.body.classList.add('edit-mode');
+  document.getElementById('editBanner').classList.add('visible');
+  document.getElementById('adminBtn').classList.add('active');
+  attachEditClickHandlers();
+}
+
+function exitEditMode() {
+  isEditMode = false;
+  cachedAdminPassword = null; // Clear cached password
+  document.body.classList.remove('edit-mode');
+  document.getElementById('editBanner').classList.remove('visible');
+  document.getElementById('adminBtn').classList.remove('active');
+  detachEditClickHandlers();
+}
+
+function attachEditClickHandlers() {
+  document.querySelectorAll('.pair-name-editable').forEach(el => {
+    el.addEventListener('click', onEditableClick);
+  });
+}
+function detachEditClickHandlers() {
+  document.querySelectorAll('.pair-name-editable').forEach(el => {
+    el.removeEventListener('click', onEditableClick);
+  });
+}
+
+function onEditableClick(e) {
+  if (!isEditMode) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const el = e.currentTarget;
+  const origName = el.dataset.orig;
+  renamePair(origName);
+}
+
+function renamePair(origName) {
+  const currentName = displayName(origName);
+  const newName = prompt(`Đổi tên cặp:\n\n(Tên gốc: "${origName}")`, currentName);
+  if (newName === null) return; // user cancelled
+  const trimmed = newName.trim();
+  if (!trimmed) {
+    delete RENAMES[origName];
+  } else if (trimmed === origName) {
+    delete RENAMES[origName];
+  } else {
+    RENAMES[origName] = trimmed;
+  }
+  // Re-render all pair names
+  applyRenamesToDOM();
+}
+
+function applyRenamesToDOM() {
+  // Re-render all .pair-name-editable elements
+  document.querySelectorAll('.pair-name-editable').forEach(el => {
+    const orig = el.dataset.orig;
+    let display = displayName(orig);
+    // Special case: panel title is uppercase
+    if (el.closest('.panel-title')) {
+      display = display.toUpperCase();
+    }
+    el.textContent = display;
+  });
+  // Re-render tab labels (they don't have .pair-name-editable wrapper, the whole tab text changes)
+  document.querySelectorAll('.tab').forEach(tab => {
+    const orig = tab.dataset.origName;
+    if (!orig) return;
+    const count = tab.querySelector('.tab-count');
+    const countHtml = count ? count.outerHTML : '';
+    const pair = PAIRS.find(p => p.name === orig);
+    if (pair) {
+      tab.innerHTML = `${pair.emoji} ${escapeHtml(displayName(orig))}` + countHtml;
+    }
+  });
+}
+
+function openSaveDialog() {
+  if (Object.keys(RENAMES).length === 0) {
+    alert('Bạn chưa đổi tên cặp nào!');
+    return;
+  }
+  updateGhStatus();
+  openModal('saveModal');
+}
+
+function updateGhStatus() {
+  const statusEl = document.getElementById('ghStatus');
+  const textEl = document.getElementById('ghStatusText');
+  const publishBtn = document.getElementById('publishBtn');
+  
+  if (!GITHUB_CONFIG.encryptedToken) {
+    statusEl.className = 'gh-status';
+    textEl.innerHTML = `Chưa setup GitHub. <a href="#" onclick="event.preventDefault();openGhSetup()" style="color:var(--c-blue);font-weight:600;">Setup ngay →</a>`;
+    publishBtn.disabled = true;
+    publishBtn.style.opacity = '0.5';
+    publishBtn.style.cursor = 'not-allowed';
+    publishBtn.title = 'Cần setup GitHub token trước';
+  } else {
+    statusEl.className = 'gh-status connected';
+    textEl.innerHTML = `Đã kết nối: <strong>${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}</strong>`;
+    publishBtn.disabled = false;
+    publishBtn.style.opacity = '1';
+    publishBtn.style.cursor = 'pointer';
+    publishBtn.title = '';
+  }
+}
+
+function openGhSetup() {
+  closeModal('saveModal');
+  document.getElementById('ghTokenInput').value = '';
+  document.getElementById('ghSetupError').textContent = '';
+  openModal('ghSetupModal');
+  setTimeout(() => document.getElementById('ghTokenInput').focus(), 100);
+}
+
+function saveLocal() {
+  try {
+    localStorage.setItem('badminton_renames', JSON.stringify(RENAMES));
+    closeModal('saveModal');
+    alert(`✅ Đã lưu ${Object.keys(RENAMES).length} thay đổi trên trình duyệt của bạn!\n\nChỉ bạn thấy. Người khác mở trang vẫn thấy tên gốc.`);
+  } catch (e) {
+    alert('Lỗi khi lưu: ' + e.message);
+  }
+}
+
+function exportPublic() {
+  // Generate a new HTML file with BUILT_IN_RENAMES updated, then download
+  try {
+    const allRenames = { ...BUILT_IN_RENAMES, ...RENAMES };
+    const newHtml = generateUpdatedHtml(allRenames);
+    
+    // Create blob and download
+    const blob = new Blob([newHtml], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'index.html';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+    
+    closeModal('saveModal');
+    setTimeout(() => {
+      alert('✅ Đã tải về "index.html" mới với các tên đã đổi.\n\n👉 Bước tiếp theo: Upload file này lên GitHub Pages (đè lên file cũ) để cả nhóm thấy.');
+    }, 200);
+  } catch (e) {
+    alert('Lỗi khi xuất file: ' + e.message);
+  }
+}
+
+function generateUpdatedHtml(allRenames) {
+  // Clone the document so we can clean up without affecting the live page
+  const clone = document.documentElement.cloneNode(true);
+
+  // Clear JS-appended content so the new file's JS renders fresh:
+  // - Tabs container
+  // - Panels container (keep noscript fallback)
+  const tabsEl = clone.querySelector('#tabs');
+  if (tabsEl) tabsEl.innerHTML = '';
+  const panelsEl = clone.querySelector('#panels');
+  if (panelsEl) {
+    panelsEl.innerHTML = '<noscript>\n      <div style="padding: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: #fbbf24;">\n        ⚠️ Trang này cần JavaScript để hiển thị lịch. Vui lòng bật JavaScript trong trình duyệt.\n      </div>\n    </noscript>';
+  }
+  // Remove edit-mode class if present
+  const bodyEl = clone.querySelector('body');
+  if (bodyEl) {
+    bodyEl.classList.remove('edit-mode');
+  }
+  // Hide any open modals
+  clone.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('visible'));
+  // Hide edit banner
+  const banner = clone.querySelector('#editBanner');
+  if (banner) banner.classList.remove('visible');
+  // Remove admin button active state
+  const admin = clone.querySelector('#adminBtn');
+  if (admin) admin.classList.remove('active');
+  // Clear back-to-top visible state
+  const btb = clone.querySelector('#backTopBtn');
+  if (btb) btb.classList.remove('visible');
+
+  let html = '<!DOCTYPE html>\n' + clone.outerHTML;
+
+  // Replace BUILT_IN_RENAMES line
+  const renamesJson = JSON.stringify(allRenames);
+  const newRenamesLine = `const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ ${renamesJson};`;
+  const renamesRe = /const BUILT_IN_RENAMES = \/\* __BUILT_IN_RENAMES__ \*\/ [^;]*;/;
+  if (renamesRe.test(html)) {
+    html = html.replace(renamesRe, newRenamesLine);
+  }
+
+  // Replace GITHUB_CONFIG line (preserve token!)
+  const ghConfigJson = JSON.stringify(GITHUB_CONFIG);
+  const newGhLine = `const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ ${ghConfigJson};`;
+  const ghRe = /const GITHUB_CONFIG = \/\* __GITHUB_CONFIG__ \*\/ \{[\s\S]*?\};/;
+  if (ghRe.test(html)) {
+    html = html.replace(ghRe, newGhLine);
+  }
+
+  return html;
+}
+
+// ============================================================
+// ============ GITHUB API + TOKEN ENCRYPTION =================
+// ============================================================
+
+// Convert ArrayBuffer/Uint8Array to hex string
+function bufToHex(buf) {
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+// Convert hex string to Uint8Array
+function hexToBuf(hex) {
+  const bytes = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+  }
+  return bytes;
+}
+
+// Derive AES-GCM key from password using PBKDF2
+async function deriveKey(password, salt) {
+  const enc = new TextEncoder();
+  const baseKey = await crypto.subtle.importKey(
+    'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
+  );
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' },
+    baseKey,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['encrypt', 'decrypt']
+  );
+}
+
+async function encryptToken(plaintext, password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveKey(password, salt);
+  const enc = new TextEncoder().encode(plaintext);
+  const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc);
+  return { iv: bufToHex(iv), salt: bufToHex(salt), ct: bufToHex(ct) };
+}
+
+async function decryptToken(encrypted, password) {
+  const salt = hexToBuf(encrypted.salt);
+  const iv = hexToBuf(encrypted.iv);
+  const ct = hexToBuf(encrypted.ct);
+  const key = await deriveKey(password, salt);
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+  return new TextDecoder().decode(pt);
+}
+
+async function saveGitHubToken() {
+  const input = document.getElementById('ghTokenInput').value.trim();
+  const errEl = document.getElementById('ghSetupError');
+  errEl.textContent = '';
+  if (!input) {
+    errEl.textContent = 'Vui lòng nhập token';
+    return;
+  }
+  if (!input.startsWith('ghp_') && !input.startsWith('github_pat_')) {
+    errEl.textContent = 'Token phải bắt đầu bằng "ghp_" hoặc "github_pat_"';
+    return;
+  }
+  if (!cachedAdminPassword) {
+    errEl.textContent = 'Phiên admin đã hết. Vui lòng đăng nhập lại';
+    return;
+  }
+
+  // Quick verify the token works by fetching the file
+  try {
+    const verifyResp = await fetch(
+      `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}`,
+      { headers: { Authorization: `Bearer ${input}`, Accept: 'application/vnd.github+json' } }
+    );
+    if (!verifyResp.ok) {
+      const data = await verifyResp.json().catch(() => ({}));
+      errEl.textContent = `Token không hợp lệ: ${data.message || verifyResp.status}`;
+      return;
+    }
+  } catch (e) {
+    errEl.textContent = `Lỗi kết nối GitHub: ${e.message}`;
+    return;
+  }
+
+  // Encrypt and save into GITHUB_CONFIG (in memory only)
+  try {
+    const encrypted = await encryptToken(input, cachedAdminPassword);
+    GITHUB_CONFIG.encryptedToken = encrypted;
+    closeModal('ghSetupModal');
+    // Need to commit this back to GitHub so future visitors have it too!
+    // We'll publish a new index.html with the encryptedToken baked in.
+    alert('✅ Token đã được lưu tạm thời trong phiên hiện tại.\n\nBấm "Đăng web ngay" để lưu token vào file HTML trên GitHub (chỉ làm 1 lần). Sau đó token sẽ luôn có sẵn cho các lần sau.');
+    openModal('saveModal');
+    updateGhStatus();
+  } catch (e) {
+    errEl.textContent = `Lỗi mã hóa: ${e.message}`;
+  }
+}
+
+async function getDecryptedToken() {
+  if (!GITHUB_CONFIG.encryptedToken) {
+    throw new Error('Chưa setup GitHub token. Bấm "Setup ngay"');
+  }
+  if (!cachedAdminPassword) {
+    throw new Error('Phiên admin đã hết. Vui lòng đăng nhập lại');
+  }
+  try {
+    return await decryptToken(GITHUB_CONFIG.encryptedToken, cachedAdminPassword);
+  } catch (e) {
+    throw new Error('Không giải mã được token. Có thể password đã đổi sau khi setup token. Vui lòng setup lại.');
+  }
+}
+
+function showPublishOverlay(msg, sub) {
+  document.getElementById('publishMsg').textContent = msg;
+  document.getElementById('publishSub').textContent = sub || '';
+  document.getElementById('publishOverlay').classList.add('visible');
+}
+function hidePublishOverlay() {
+  document.getElementById('publishOverlay').classList.remove('visible');
+}
+
+async function publishToGitHub() {
+  if (!GITHUB_CONFIG.encryptedToken) {
+    openGhSetup();
+    return;
+  }
+  closeModal('saveModal');
+  showPublishOverlay('Đang chuẩn bị...', 'Mã hóa & xác thực');
+
+  try {
+    const token = await getDecryptedToken();
+    const { owner, repo, branch, filePath } = GITHUB_CONFIG;
+
+    // Step 1: Get current file SHA (required by GitHub API to update)
+    showPublishOverlay('Đang tải thông tin file...', `${owner}/${repo}/${filePath}`);
+    const getResp = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`,
+      { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } }
+    );
+    if (!getResp.ok) {
+      throw new Error(`Không lấy được file: ${getResp.status}`);
+    }
+    const fileInfo = await getResp.json();
+    const oldSha = fileInfo.sha;
+
+    // Step 2: Generate new HTML
+    showPublishOverlay('Đang tạo file mới...', 'Áp dụng tên đã đổi');
+    const allRenames = { ...BUILT_IN_RENAMES, ...RENAMES };
+    const newHtml = generateUpdatedHtml(allRenames);
+
+    // Step 3: Encode to base64 (handle UTF-8 properly)
+    const utf8Bytes = new TextEncoder().encode(newHtml);
+    let binStr = '';
+    for (let i = 0; i < utf8Bytes.length; i++) {
+      binStr += String.fromCharCode(utf8Bytes[i]);
+    }
+    const b64 = btoa(binStr);
+
+    // Step 4: PUT to update file
+    const renameCount = Object.keys(allRenames).length;
+    const commitMsg = `Update lịch cầu lông (${renameCount} tên đã đổi) [${new Date().toISOString().split('T')[0]}]`;
+    showPublishOverlay('Đang đăng lên GitHub...', 'Commit & push');
+    const putResp = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: commitMsg,
+          content: b64,
+          sha: oldSha,
+          branch: branch
+        })
+      }
+    );
+    if (!putResp.ok) {
+      const errData = await putResp.json().catch(() => ({}));
+      throw new Error(`GitHub trả lỗi: ${errData.message || putResp.status}`);
+    }
+
+    hidePublishOverlay();
+    // Clear local renames - they're now baked into GitHub
+    RENAMES = {};
+    try { localStorage.removeItem('badminton_renames'); } catch (e) {}
+
+    const pagesUrl = `https://${owner}.github.io/${repo}/`;
+    alert(`🎉 Đăng thành công!\n\nGitHub Pages đang rebuild trang (mất ~30-60 giây).\n\nSau đó cả nhóm vào link sẽ thấy tên mới:\n${pagesUrl}\n\nF5 lại trang sau 1 phút để xem kết quả.`);
+  } catch (e) {
+    hidePublishOverlay();
+    alert(`❌ Lỗi khi đăng:\n\n${e.message}\n\nVui lòng thử lại hoặc dùng "📥 Tải file" để upload thủ công.`);
+    openModal('saveModal');
+  }
+}
 </script>
 </body>
 </html>

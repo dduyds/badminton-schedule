@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
+<html lang="vi"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#e0f2fe">
@@ -9,8 +8,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>🏸 LỊCH THI ĐẤU CẦU LÔNG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --c-bg: #e0f2fe;
@@ -1166,7 +1165,7 @@
   }
 </style>
 </head>
-<body>
+<body class="" style="">
 
 <div class="container">
 
@@ -1181,7 +1180,7 @@
     <div class="hero-stats">
       <div class="stat-pill"><strong>6</strong>Cặp đôi</div>
       <div class="stat-pill"><strong>12</strong>Lượt đấu</div>
-      <div class="stat-pill"><strong>2</strong>Sân (7 & 8)</div>
+      <div class="stat-pill"><strong>2</strong>Sân (7 &amp; 8)</div>
       <div class="stat-pill"><strong>24</strong>Trận đấu</div>
     </div>
   </header>
@@ -1192,13 +1191,11 @@
   </nav>
 
   <!-- PANELS CONTAINER -->
-  <main id="panels">
-    <noscript>
+  <main id="panels"><noscript>
       <div style="padding: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: #fbbf24;">
         ⚠️ Trang này cần JavaScript để hiển thị lịch. Vui lòng bật JavaScript trong trình duyệt.
       </div>
-    </noscript>
-  </main>
+    </noscript></main>
 
 </div>
 
@@ -1237,8 +1234,7 @@
   <div class="modal">
     <h2>🔒 Đăng nhập Admin</h2>
     <p class="modal-subtitle">Nhập mật khẩu để bật chế độ chỉnh sửa</p>
-    <input type="password" id="passwordInput" placeholder="Mật khẩu..." autocomplete="off"
-           onkeydown="if(event.key==='Enter') submitPassword()">
+    <input type="password" id="passwordInput" placeholder="Mật khẩu..." autocomplete="off" onkeydown="if(event.key==='Enter') submitPassword()">
     <div class="modal-error" id="passwordError"></div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeModal('passwordModal')">Huỷ</button>
@@ -1257,12 +1253,12 @@
       <strong>🚀 Đăng web ngay (Khuyên dùng):</strong> Tự động commit lên GitHub. Cả nhóm thấy sau 30-60 giây khi GitHub Pages build xong.<br><br>
       <strong>📥 Tải file (Thủ công):</strong> Tải file HTML về để bạn tự upload lên GitHub.
     </div>
-    <div class="gh-status" id="ghStatus"><span class="dot"></span><span id="ghStatusText">Đang kiểm tra GitHub...</span></div>
+    <div class="gh-status connected" id="ghStatus"><span class="dot"></span><span id="ghStatusText">Đã kết nối: <strong>dduyds/badminton-schedule</strong></span></div>
     <div class="modal-actions" style="margin-top: 14px;">
       <button class="btn btn-secondary" onclick="closeModal('saveModal')">Huỷ</button>
       <button class="btn btn-secondary" onclick="saveLocal()">🧑 Chỉ tôi</button>
       <button class="btn btn-secondary" onclick="exportPublic()">📥 Tải file</button>
-      <button class="btn btn-orange" id="publishBtn" onclick="publishToGitHub()">🚀 Đăng web</button>
+      <button class="btn btn-orange" id="publishBtn" onclick="publishToGitHub()" title="" style="opacity: 1; cursor: pointer;">🚀 Đăng web</button>
     </div>
   </div>
 </div>
@@ -1279,7 +1275,7 @@
       3. Bấm <strong>Generate token</strong> → copy token bắt đầu bằng <code>ghp_...</code><br>
       4. Dán vào ô bên dưới
       <br>
-      <a href="https://github.com/settings/tokens/new?description=badminton-schedule&scopes=public_repo" target="_blank" rel="noopener" class="setup-link">🔗 Mở trang tạo Token</a>
+      <a href="https://github.com/settings/tokens/new?description=badminton-schedule&amp;scopes=public_repo" target="_blank" rel="noopener" class="setup-link">🔗 Mở trang tạo Token</a>
     </div>
     <input type="text" id="ghTokenInput" placeholder="ghp_..." autocomplete="off" spellcheck="false" style="font-family: monospace; font-size: 13px;">
     <div class="modal-error" id="ghSetupError"></div>
@@ -1291,10 +1287,10 @@
 </div>
 
 <!-- PUBLISHING OVERLAY -->
-<div class="publishing-overlay" id="publishOverlay">
+<div class="publishing-overlay visible" id="publishOverlay">
   <div class="spinner"></div>
-  <div class="msg" id="publishMsg">Đang đăng lên GitHub...</div>
-  <div class="sub" id="publishSub">Đang tải file HTML mới lên repository</div>
+  <div class="msg" id="publishMsg">Đang tạo file mới...</div>
+  <div class="sub" id="publishSub">Áp dụng tên đã đổi</div>
 </div>
 
 <script>
@@ -1313,7 +1309,7 @@ const COURT_NAMES = META.court_names;
 // ============ HELPERS ============
 
 // ===== RENAMES: mapping from original name → display name =====
-const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ {};
+const BUILT_IN_RENAMES = /* __BUILT_IN_RENAMES__ */ {"Duy em - Tin":"Duy - Diệu","Duy - Diệu":"Duy em - Tin"};
 let RENAMES = {};
 try {
   const stored = localStorage.getItem('badminton_renames');
@@ -1556,15 +1552,7 @@ setInterval(() => {
 const ADMIN_PASSWORD_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
 
 // ============ GITHUB CONFIG ============
-const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ {
-  owner: "dduyds",
-  repo: "badminton-schedule",
-  branch: "main",
-  filePath: "index.html",
-  // Encrypted token (AES-GCM, key derived from admin password via PBKDF2)
-  // Format: {iv: hex, salt: hex, ct: hex}. Empty until user sets it up.
-  encryptedToken: null
-};
+const GITHUB_CONFIG = /* __GITHUB_CONFIG__ */ {"owner":"dduyds","repo":"badminton-schedule","branch":"main","filePath":"index.html","encryptedToken":{"iv":"c24d45b9f590de41b2b1048c","salt":"ea8c529314caf280e959f769dafbb8c0","ct":"c9f343c1342176429df1d5a0c0b46e92a697a38e434f08c25c153a66bfbcf5ccf5352aefbc9d117066f3f941ef3a2eec580858c50fb505d4"}};
 
 let isEditMode = false;
 let cachedAdminPassword = null; // Cached during edit session for token decryption
@@ -2016,5 +2004,6 @@ async function publishToGitHub() {
   }
 }
 </script>
-</body>
-</html>
+
+
+</body><ddict-div style="visibility: visible !important;"></ddict-div></html>
